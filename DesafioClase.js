@@ -36,7 +36,7 @@ usuario1.getBookNames();
 console.log("Nombre de libros: ", usuario1.getBookNames());
 console.log(usuario1);
 
-console.log("==============================");
+console.log("=============================");
 
 let usuario2 = new Usuario("Sam", "Perez");
 usuario2.getFullName();

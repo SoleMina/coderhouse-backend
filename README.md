@@ -1,3 +1,7 @@
 # coderhouse-backend
+
 Repository for challenges
-Hello
+
+## Challenges
+
+Class User challenge
