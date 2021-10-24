@@ -16,8 +16,8 @@ class Usuario {
   }
   addBook(nombre, autor) {
     this.libros.push({
-      nombre: nombre,
-      autor: autor
+      nombre,
+      autor
     });
   }
   getBookNames() {
