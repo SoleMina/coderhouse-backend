@@ -26,7 +26,6 @@ class Usuario {
 }
 
 let usuario1 = new Usuario("Karina", "Prado");
-usuario1.getFullName();
 console.log(usuario1.getFullName());
 usuario1.addMascota("Gato");
 usuario1.countMascotas();
@@ -39,7 +38,6 @@ console.log(usuario1);
 console.log("=============================");
 
 let usuario2 = new Usuario("Sam", "Perez");
-usuario2.getFullName();
 console.log(usuario2.getFullName());
 usuario2.addMascota("Gato");
 usuario2.addMascota("Perro");
