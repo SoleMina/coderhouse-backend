@@ -11,7 +11,7 @@ container
   })
   .then((result) => console.log(result.message));
 
-//container.getById(1).then((result) => console.log(result));
-//container.getAll();
+container.getById(1).then((result) => console.log(result));
+container.getAll();
 //container.deleteById(2);
 //container.deleteAll();
