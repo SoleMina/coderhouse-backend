@@ -9,10 +9,10 @@ class Container {
         return { status: "error", message: "El producto ya existe" };
       } else {
         let dataObj = {
-          id: products.length + 1,
           title: product.title,
           price: product.price,
-          thumbnail: product.thumbnail
+          thumbnail: product.thumbnail,
+          id: products.length + 1
         };
         products = [...products, dataObj];
 
@@ -29,10 +29,10 @@ class Container {
     } catch (error) {
       //El archivo no existe
       let dataObj = {
-        id: 1,
         title: product.title,
         price: product.price,
-        thumbnail: product.thumbnail
+        thumbnail: product.thumbnail,
+        id: 1
       };
 
       try {
