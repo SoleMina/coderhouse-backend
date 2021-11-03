@@ -108,11 +108,7 @@ class Container {
 
   async deleteAll() {
     try {
-      let products = [];
-      await fs.promises.writeFile(
-        "./files/productos.txt",
-        JSON.stringify(products)
-      );
+      await fs.promises.writeFile("./files/productos.txt", JSON.stringify([]));
 
       return { status: "success", mesagge: "Productos eliminados" };
     } catch (error) {
