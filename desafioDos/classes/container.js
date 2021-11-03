@@ -14,7 +14,7 @@ class Container {
           price: product.price,
           thumbnail: product.thumbnail
         };
-        products.push(dataObj);
+        products = [...products, dataObj];
 
         try {
           await fs.promises.writeFile(
