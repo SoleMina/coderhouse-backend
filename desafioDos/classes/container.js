@@ -111,7 +111,7 @@ class Container {
       let products = [];
       await fs.promises.writeFile(
         "./files/productos.txt",
-        JSON.stringify(products, null, 2)
+        JSON.stringify(products)
       );
 
       return { status: "success", mesagge: "Productos eliminados" };
