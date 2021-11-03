@@ -75,7 +75,6 @@ class Container {
       let data = await fs.promises.readFile("./files/productos.txt", "utf-8");
       let products = JSON.parse(data);
       console.log(products);
-      return products;
       return { status: "success", mesagge: "Productos encontrados" };
     } catch (error) {
       return {
