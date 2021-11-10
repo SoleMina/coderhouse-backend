@@ -25,8 +25,6 @@ app.get("/products", (req, res) => {
   const status = req.query;
 
   container.getAll().then((result) => {
-    //let products = result.payload;
-    //res.send(products);
     if (result.status === "success") {
       res.status(200).send(result.payload);
     } else {
