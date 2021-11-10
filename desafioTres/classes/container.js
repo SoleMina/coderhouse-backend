@@ -66,7 +66,7 @@ class Container {
     } catch (error) {
       return {
         status: "Error",
-        message: "No se encontró el producto"
+        message: "No se encontró el producto " + error
       };
     }
   }
@@ -104,7 +104,7 @@ class Container {
     } catch (error) {
       return {
         status: "Error",
-        message: "No se encontró el producto"
+        message: "No se encontró el producto " + error
       };
     }
   }
@@ -117,7 +117,7 @@ class Container {
     } catch (error) {
       return {
         status: "Error",
-        message: "No se pudo eliminar los productos"
+        message: "No se pudo eliminar los productos " + error
       };
     }
   }
