@@ -1,0 +1,58 @@
+[
+  {
+    "id": "VoK9J5B",
+    "title": "evento 1",
+    "location": "México",
+    "price": 155,
+    "capacity": 4,
+    "status": "open",
+    "participants": [
+      "XnRrF"
+    ]
+  },
+  {
+    "id": "nEqi3WE",
+    "title": "evento 2",
+    "location": "Argentina",
+    "price": 235,
+    "capacity": 0,
+    "status": "closed",
+    "participants": [
+      "XnRrF",
+      "gUtXE",
+      "NUQJE"
+    ]
+  },
+  {
+    "id": "W0w9MCo",
+    "title": "evento 3",
+    "location": "Colombia",
+    "price": 160,
+    "capacity": 4,
+    "status": "open",
+    "participants": []
+  },
+  {
+    "id": "Q3e5327",
+    "title": "evento 4",
+    "location": "Canadá",
+    "price": 500,
+    "capacity": 0,
+    "status": "closed",
+    "participants": [
+      "KTz0U",
+      "NUQJE",
+      "XnRrF",
+      "gUtXE"
+    ]
+  },
+  {
+    "id": "6hZDLqz",
+    "title": "evento 5",
+    "location": "Chile",
+    "price": 220,
+    "capacity": 6,
+    "status": "open",
+    "participants": []
+  }
+]
