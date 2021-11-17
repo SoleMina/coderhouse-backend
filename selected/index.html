@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>TESTING</h1>
+    <select id="mensajes" onchange="getMoneyValue()">
+      <option value="">Select one</option>
+      <option value="1000">1000</option>
+      <option value="2000">2000</option>
+      <option value="3000">3000</option>
+    </select>
+    <select id="paises" onchange="getMoneyValue()">
+      <option value="per">per</option>
+      <option value="ar">ar</option>
+    </select>
+    <p id="pw"></p>
+  </body>
+
+  <script>
+    const getMoneyValue = () => {
+      let msj1 = document.getElementById("mensajes").value;
+      let peru = document.getElementById("paises").value == "per";
+      let argentina = document.getElementById("paises").value == "ar";
+      let pw = document.querySelector("#pw");
+      if (msj1 == 1000 && peru) {
+        pw.innerText = "S/ 3,000";
+      } else if (msj1 == 2000 && peru) {
+        pw.innerText = "S/ 4,000";
+      } else if (msj1 == 3000 && peru) {
+        pw.innerText = "S/ 5,000";
+      } else if (msj1 == 1000 && argentina) {
+        pw.innerText = "$/ 500";
+      } else if (msj1 == 2000 && argentina) {
+        pw.innerText = "$/ 900";
+      } else if (msj1 == 3000 && argentina) {
+        pw.innerText = "$/ 1000";
+      }
+    };
+  </script>
+</html>

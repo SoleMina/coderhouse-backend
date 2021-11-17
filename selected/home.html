@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container__radio {
+        display: flex;
+        text-align: left;
+      }
+      select {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TESTING</h1>
+    <div class="container__radio">
+      <div>
+        <input
+          type="radio"
+          id="col"
+          name="pais"
+          value="col"
+          onchange="getMoneyValue()"
+        />
+        <label for="col">COLOMBIA</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="per"
+          name="pais"
+          value="per"
+          onchange="getMoneyValue()"
+        />
+        <label for="per">PERU</label>
+      </div>
+      <select id="paises" onchange="getMoneyValue()">
+        <option value="per">per</option>
+        <option value="ar">ar</option>
+      </select>
+    </div>
+
+    <p id="pw"></p>
+    <script>
+      const getMoneyValue = () => {
+        //Variables
+        let colombiaChecked = document.querySelector("#col").checked;
+        let peruChecked = document.querySelector("#per").checked;
+        let paises = document.querySelector("#paises").value;
+
+        //Conditional
+        if (colombiaChecked && paises == "per") {
+          document.querySelector("#pw").innerText =
+            "THIS IS COLOMBIA WITH PERU";
+        } else if (colombiaChecked && paises == "ar") {
+          document.querySelector("#pw").innerText = "CHEEE BOLUDO";
+        } else if (peruChecked && paises == "per") {
+          document.querySelector("#pw").innerText = "PERÚ CON PERÚ";
+        } else if (peruChecked && paises == "ar") {
+          document.querySelector("#pw").innerText = "PERÚ CON ARGENTINA";
+        }
+      };
+    </script>
+  </body>
+</html>
