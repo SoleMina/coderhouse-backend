@@ -24,6 +24,9 @@
     "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70"
   },
   {
+    "title": "Iphone Pro Max 13",
+    "price": 4970,
+    "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70",
     "id": 5
   }
 ]

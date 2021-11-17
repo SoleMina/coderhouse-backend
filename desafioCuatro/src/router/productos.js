@@ -26,29 +26,10 @@ router.get("/:pid", (req, res) => {
   });
 });
 
-router.get("/productRandom", (req, res) => {
-  try {
-    if (id == "productRandom") {
-      container.getRandomProduct().then((result) => {
-        let products = result.payload;
-        console.log(products);
-        if (result.status === "success") {
-          console.log("RESULT", result);
-          res.send(result.payload);
-        } else {
-          res.send(res.message);
-        }
-      });
-    }
-  } catch (error) {
-    res.send(res.message);
-  }
-});
-
 //POSTS
 router.post("/", (req, res) => {
   let body = req.body;
-  console.log(body);
+  console.log("POST", body);
   container.save(body).then((result) => {
     res.send(result);
   });

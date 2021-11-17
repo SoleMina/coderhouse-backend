@@ -3,12 +3,11 @@ document.addEventListener("submit", (event) => {
 
   let form = document.querySelector("#productForm");
   let data = new FormData(form);
-  console.log("DATA", data);
+  console.log(data);
 
   fetch("http://localhost:8080/api/products", {
     method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
+    body: JSON.stringify(data)
   })
     .then((result) => {
       return result.json();

@@ -14,10 +14,7 @@ const server = app.listen(PORT, () => {
 const Container = require("./classes/container");
 const container = new Container();
 
-//Import router
-const routerProducts = require("./router/productos");
-
-//Multer
+//Almacenar archivos con multer(configuración de almacenamiento)
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public");
@@ -28,6 +25,9 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+//Import router
+const routerProducts = require("./router/productos");
+
 //Configurar para indicar que products pueda recibir json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -36,18 +36,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/imagenes", express.static(__dirname + "/public"));
 app.use(cors());
 
-//Middleware
-app.use("/api/products", routerProducts);
-
 //Middleware manejo de errores
 app.use((err, req, res, next) => {
   console.log(err.stack);
   escape.status(500).send("Error en el servidor");
 });
 
-app.get("/", (req, res) => {
-  res.send('Hola, soy Karina y este es el "Desafío Cuatro"');
+app.use((req, res, next) => {
+  let timestamp = Date.now();
+  let time = new Date(timestamp);
+  console.log("Petición hecha a las: " + time.toTimeString().split(" ")[0]);
+  next();
 });
+
+app.get("/", (req, res) => {
+  res.send("Hola, este es el desafío 4");
+});
+//Middleware
+app.use("/api/products", routerProducts);
+
 app.get("/api/productRandom", (req, res) => {
   try {
     container.getRandomProduct().then((result) => {
@@ -65,7 +72,7 @@ app.get("/api/productRandom", (req, res) => {
   }
 });
 
-//Se evnía como un form data
+//Se envía como un form data
 app.post("/api/uploadfile", upload.single("file"), (req, res) => {
   const files = req.file;
   if (!files || files.length === 0) {
