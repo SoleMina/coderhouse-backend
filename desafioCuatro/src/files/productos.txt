@@ -20,7 +20,7 @@
   {
     "id": 4,
     "title": "Tablet 12",
-    "price": 1990,
+    "price": 1999,
     "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70"
   },
   {
