@@ -29,7 +29,7 @@ router.get("/:pid", (req, res) => {
 //POSTS
 router.post("/", (req, res) => {
   let body = req.body;
-  console.log("POST", body);
+  body.price = parseInt(body.price);
   container.save(body).then((result) => {
     res.send(result);
   });

@@ -14,6 +14,9 @@ const server = app.listen(PORT, () => {
 const Container = require("./classes/container");
 const container = new Container();
 
+//Import router
+const routerProducts = require("./router/productos");
+
 //Almacenar archivos con multer(configuración de almacenamiento)
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -24,9 +27,7 @@ const storage = multer.diskStorage({
   }
 });
 const upload = multer({ storage: storage });
-
-//Import router
-const routerProducts = require("./router/productos");
+app.use(upload.single("file"));
 
 //Configurar para indicar que products pueda recibir json
 app.use(express.json());

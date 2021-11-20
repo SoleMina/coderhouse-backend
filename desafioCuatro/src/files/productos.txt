@@ -28,5 +28,11 @@
     "price": 4970,
     "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70",
     "id": 5
+  },
+  {
+    "title": "Samsung Galaxy 10",
+    "price": 3443,
+    "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70",
+    "id": 6
   }
 ]
