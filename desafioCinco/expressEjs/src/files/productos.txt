@@ -52,5 +52,10 @@
     "price": "877",
     "thumbnail": "http://localhost:8080/images/1637678424981pelucherosa.jpg",
     "id": 9
+  },
+  {
+    "title": "Impresora Epson",
+    "thumbnail": "http://localhost:8080/images/1637775433525impresora.jpg",
+    "id": 10
   }
 ]

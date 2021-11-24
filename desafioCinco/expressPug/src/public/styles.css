@@ -2,6 +2,9 @@ body {
   font-family: system-ui, sans-serif;
   background-color: #ffd598;
 }
+.bck {
+  background-color: #2ecde1;
+}
 .products-container {
   width: 80%;
   margin: 0 auto;
@@ -25,6 +28,12 @@ body {
   color: white;
   text-align: center;
   padding-top: 1%;
+}
+#productForm {
+  background-color: white;
+  padding: 2% 4%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 /*MEDIA QUERIES*/
