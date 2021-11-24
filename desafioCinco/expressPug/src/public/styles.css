@@ -26,3 +26,20 @@ body {
   text-align: center;
   padding-top: 1%;
 }
+
+/*MEDIA QUERIES*/
+@media (max-width: 1150px) {
+  .products-box {
+    width: 40%;
+  }
+}
+@media (max-width: 950px) {
+  .products-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .products-box {
+    width: 90%;
+  }
+}

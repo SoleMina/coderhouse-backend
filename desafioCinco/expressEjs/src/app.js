@@ -1,6 +1,6 @@
-const express = require("express");
-const cors = require("cors");
-const upload = require("./services/uploader");
+import express from "express";
+import cors from "cors";
+import upload from "./services/uploader.js";
 
 //Iniciar
 const app = express();
@@ -11,11 +11,14 @@ const server = app.listen(PORT, () => {
 });
 
 //Import class container
-const Container = require("./classes/container");
+import Container from "./classes/container.js";
 const container = new Container();
 
+app.set("views", "./views");
+app.set("view engine", "ejs");
+
 //Import router
-const routerProducts = require("./router/productos");
+import routerProducts from "./router/productos.js";
 
 //app.use(upload.single("file"));
 
@@ -24,9 +27,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Public
-app.use("/imagenes", express.static(__dirname + "/public"));
+app.use(express.static("public"));
 app.use(cors());
-
 //Middleware manejo de errores
 app.use((err, req, res, next) => {
   console.log(err.stack);
@@ -84,13 +86,23 @@ app.post(
     res.send(files);
   }
 );
-
+let products = [];
 app.get("/view/products", (req, res) => {
   container.getAll().then((result) => {
     let info = result.payload;
     let preparedObject = {
       products: info
     };
-    res.render("products", preparedObject);
+    res.render("products.ejs", preparedObject);
   });
+});
+
+app.post("/view/products", (req, res) => {
+  let product = {
+    title: req.body.title,
+    price: req.body.price,
+    thumbnail: req.body.thumbnail
+  };
+  products.push(product);
+  res.send({ message: "Registrado" });
 });
