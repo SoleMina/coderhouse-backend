@@ -42,20 +42,8 @@
     "id": 7
   },
   {
-    "title": "Peluche rosado2",
-    "price": "99",
-    "thumbnail": "http://localhost:8080/images/1637642263711pelucherosa.jpg",
-    "id": 8
-  },
-  {
-    "title": "Impresora",
-    "price": "877",
-    "thumbnail": "http://localhost:8080/images/1637678424981pelucherosa.jpg",
-    "id": 9
-  },
-  {
     "title": "Impresora Epson",
-    "thumbnail": "http://localhost:8080/images/1637775605872impresora.jpg",
-    "id": 10
+    "thumbnail": "http://localhost:8080/images/1637847310618impresora.jpg",
+    "id": 8
   }
 ]

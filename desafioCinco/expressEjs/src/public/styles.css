@@ -5,12 +5,25 @@ body {
 .bck {
   background-color: #2ecde1;
 }
+table {
+  background: #b7b7b7;
+  width: 600px;
+  text-align: center;
+  border-spacing: 0;
+}
+th {
+  padding: 1%;
+}
+th,
+td {
+  border-bottom: 1px solid white;
+}
 .products-container {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 .text-center {
   text-align: center;
@@ -50,5 +63,8 @@ body {
   }
   .products-box {
     width: 90%;
+  }
+  table {
+    width: auto;
   }
 }

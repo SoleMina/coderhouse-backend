@@ -2,16 +2,24 @@
 html
     include includes/head.pug
     body
-        h1(class="text-center")="Products Gallery"
-        div(class="container")
-        if exist
-            div(class="products-container")
-                each product in products
-                    div(class="products-box")
-                        div(class="products-card")
-                            p=product.title
-                            p=product.price
-                            img(src=product.thumbnail, width="200")
-            h2(class="text-center")="End"
-        else
-            p="You don't have products :/"
+        h1(class="text-center mb-5")="Products Gallery"
+            if exist
+                div(class="products-container")
+                    table
+                        thead
+                            tr
+                                th="Name"
+                                th="Price"
+                                th="Image"
+                        tbody
+                        each product in products
+                            tr
+                                td=product.title
+                                td=product.price
+                                td
+                                    img(src=product.thumbnail, width="150")
+
+            
+                h2(class="text-center")="End"
+            else
+                p="You don't have products :/"
