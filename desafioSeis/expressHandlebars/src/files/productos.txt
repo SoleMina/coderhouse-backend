@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Cellphone",
+    "price": 1200.5,
+    "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70",
+    "id": 1
+  },
+  {
+    "title": "Laptop",
+    "price": 3000.5,
+    "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70",
+    "id": 2
+  },
+  {
+    "title": "Ipad Pro",
+    "price": 3200.5,
+    "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70",
+    "id": 3
+  },
+  {
+    "id": 4,
+    "title": "Tablet 12",
+    "price": 1999,
+    "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70"
+  },
+  {
+    "title": "Iphone Pro Max 13",
+    "price": 4970,
+    "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70",
+    "id": 5
+  },
+  {
+    "title": "Samsung Galaxy 10",
+    "price": 3443,
+    "thumbnail": "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70",
+    "id": 6
+  },
+  {
+    "title": "Peluche rosado",
+    "price": "99",
+    "thumbnail": "http://localhost:8080/images/1637642166765pelucherosa.jpg",
+    "id": 7
+  },
+  {
+    "title": "Epson",
+    "price": "654",
+    "thumbnail": "http://localhost:8080/images/1638290946082impresora.jpg",
+    "id": 8
+  },
+  {
+    "title": "Macbook Pro",
+    "price": "5432",
+    "thumbnail": "http://localhost:8080/images/1638291038032mackbook.jpg",
+    "id": 9
+  }
+]

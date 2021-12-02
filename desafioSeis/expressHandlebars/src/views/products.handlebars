@@ -1,0 +1,20 @@
+<div class="products-container">
+    <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+              <td>{{this.title}}</td>
+              <td>{{this.price}}</td>
+              <td><img src={{this.thumbnail}} width="150" ></td>
+            </tr>
+             {{/each}}
+        </tbody>
+    </table>
+</div>
