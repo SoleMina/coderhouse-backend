@@ -1,5 +1,6 @@
 //Instanciar Socket desde el lado del cliente
 const socket = io();
+const admin = true;
 //*************EVENTOS DE SOCKET****************+*/
 socket.on("deliverProducts", (data) => {
   let products = data.payload;
@@ -25,23 +26,40 @@ document.addEventListener("submit", (event) => {
   let form = document.querySelector("#productForm");
   let data = new FormData(form);
 
-  fetch("http://localhost:8080/api/products", {
-    method: "POST",
-    body: data
-  })
-    .then((result) => {
-      return result.json();
+  if (admin) {
+    fetch("http://localhost:8080/api/products", {
+      method: "POST",
+      body: data
     })
-    .then((json) => {
-      Swal.fire({
-        title: "éxito",
-        text: json.message,
-        icon: "success",
-        timer: 2000
-      }).then((result) => {
-        location.href = "http://localhost:8080/";
+      .then((result) => {
+        return result.json();
+      })
+      .then((json) => {
+        Swal.fire({
+          title: "éxito",
+          text: json.message,
+          icon: "success",
+          timer: 2000
+        }).then((result) => {
+          location.href = "http://localhost:8080/";
+        });
       });
-    });
+  } else {
+    fetch("http://localhost:8080/api/products")
+      .then((result) => {
+        return result.json();
+      })
+      .then((json) => {
+        Swal.fire({
+          title: "Error",
+          text: json.message,
+          icon: "failed",
+          timer: 2000
+        }).then((result) => {
+          location.href = "http://localhost:8080/";
+        });
+      });
+  }
 });
 
 //*************EVENTOS DE SOCKET PARA CENTRO DE MENSAJE****************+*/

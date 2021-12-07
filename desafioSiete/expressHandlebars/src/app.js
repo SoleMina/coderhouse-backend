@@ -4,8 +4,7 @@ import cors from "cors";
 import upload from "./services/uploader.js";
 import { Server } from "socket.io";
 import __dirname from "./utils.js";
-import authMiddleware from "./utils.js";
-
+import { authMiddleware } from "./utils.js";
 //Iniciar
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -25,6 +24,7 @@ app.set("view engine", "handlebars");
 
 //Import router
 import routerProducts from "./router/productos.js";
+import routerCart from "./router/cart.js";
 
 //app.use(upload.single("file"));
 
@@ -45,14 +45,17 @@ app.use((req, res, next) => {
   let timestamp = Date.now();
   let time = new Date(timestamp);
   console.log("Petición hecha a las: " + time.toTimeString().split(" ")[0]);
+  req.auth = admin;
   next();
 });
 
 app.get("/", (req, res) => {
   res.send("Hola, este es el desafío 5");
 });
-//Middleware
+
+//Middleware Routes
 app.use("/api/products", routerProducts);
+app.use("/api/cart", routerCart);
 
 app.get("/api/productRandom", (req, res) => {
   try {
@@ -94,7 +97,7 @@ app.post(
   }
 );
 
-app.get("/view/products", (req, res) => {
+app.get("/view/products", authMiddleware, (req, res) => {
   container.getAll().then((result) => {
     let info = result.payload;
     let preparedObject = {

@@ -1,0 +1,24 @@
+{
+  "name": "coderhouse-backend",
+  "version": "1.0.0",
+  "description": "Repository for challenges",
+  "main": "DesafioClase.js",
+  "dependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SoleMina/coderhouse-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SoleMina/coderhouse-backend/issues"
+  },
+  "homepage": "https://github.com/SoleMina/coderhouse-backend#readme"
+}
