@@ -5,10 +5,8 @@ import __dirname from "../utils.js";
 const cartURL = __dirname + "/files/carrito.txt";
 
 class Carrito {
-  async create(product) {
+  async create() {
     try {
-      let newCarrito = [];
-
       //Time
       const timestamp = Date.now();
       const time = new Date(timestamp);
@@ -17,7 +15,7 @@ class Carrito {
       let dataObj = {
         id: cart.length + 1,
         timestamp: carritoTime,
-        products: newCarrito
+        products: []
       };
 
       try {
@@ -31,17 +29,17 @@ class Carrito {
       const timestamp = Date.now();
       const time = new Date(timestamp);
       const carritoTime = time.toTimeString().split(" ")[0];
-
-      let newCarrito = [];
-
       let dataObj = {
         id: 1,
         timestamp: carritoTime,
-        products: newCarrito
+        products: []
       };
 
       try {
-        await fs.promises.writeFile(cartURL, JSON.stringify(dataObj, null, 2));
+        await fs.promises.writeFile(
+          cartURL,
+          JSON.stringify([dataObj], null, 2)
+        );
         return { status: "success", message: "Carrito creado con éxito" };
       } catch (error) {
         return {
@@ -54,26 +52,16 @@ class Carrito {
   async addProduct(product) {
     try {
       let data = await fs.promises.readFile(cartURL, "utf-8");
-      let cart = JSON.parse(data);
-
-      let newCarrito = [];
-
-      const timestamp = Date.now();
-      const time = new Date(timestamp);
-      const carritoTime = time.toTimeString().split(" ")[0];
-
-      newCarrito = [...carrito, product];
-
-      products = newCarrito;
-      cart = [...cart, dataObj];
+      data = JSON.parse(data);
+      data[0].products = [...data[0].products, product];
 
       try {
-        await fs.promises.writeFile(cartURL, JSON.stringify(cart, null, 2));
+        await fs.promises.writeFile(cartURL, JSON.stringify(data, null, 2));
         return { status: "success", message: "Producto creado" };
       } catch (error) {
-        return { status: "error", message: "No se pudo crear el producto" };
+        return { status: "error", message: "No se pudo crear el productoooo" };
       }
-    } catch {
+    } catch (error) {
       return {
         status: "error",
         message: "No se pudo crear el carrito: " + error

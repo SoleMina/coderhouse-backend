@@ -25,9 +25,13 @@ router.get("/:pid", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  carrito.create().then((result) => {
+    res.send(result);
+  });
+});
+router.post("/product", (req, res) => {
   let product = req.body;
-  console.log("ESSS", product);
-  carrito.create(product).then((result) => {
+  carrito.addProduct(product).then((result) => {
     res.send(result);
   });
 });
