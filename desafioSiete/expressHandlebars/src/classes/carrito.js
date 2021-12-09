@@ -65,6 +65,7 @@ class Carrito {
       let products = JSON.parse(dataProduct);
       console.log("PRODUCT", products);
       console.log("id", id);
+
       //filter devuelve array, por eso usamos find ya que devuelve el valor como tal, en este caso objeto
       let product = products.find((product) => product.id == id);
       if (products.length > 0) {
@@ -167,7 +168,7 @@ class Carrito {
       let data = await fs.promises.readFile(cartURL, "utf-8");
       data = JSON.parse(data);
 
-      //Get object with the id
+      //Get object
       let dataResult = data.find((product) => product.id === idCart);
       let products = dataResult.products;
 
@@ -206,7 +207,6 @@ class Carrito {
       let data = await fs.promises.readFile(cartURL, "utf-8");
       data = JSON.parse(data);
 
-      //Get all cart that don't have the id to delete
       let result = data.filter((product) => product.id !== id);
       await fs.promises.writeFile(cartURL, JSON.stringify(result, null, 2));
       return {
