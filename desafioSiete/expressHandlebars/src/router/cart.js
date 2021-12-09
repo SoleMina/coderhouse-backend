@@ -6,13 +6,14 @@ const carrito = new Carrito();
 const container = new Container();
 const router = express.Router();
 
-//Get all products added to the cart
+//Get all products added from cart 0 by default
 router.get("/products", (req, res) => {
   carrito.getAllProducts().then((result) => {
     res.send(result.payload);
   });
 });
-//Get product from the cart by id
+
+//Get product with id product from  cart 0 by default
 router.get("/:pid/products", (req, res) => {
   let id = req.params.pid;
   carrito.getProductById(id).then((result) => {
@@ -27,13 +28,15 @@ router.post("/", (req, res) => {
   });
 });
 
-//Add product by id product to cart
+//Add product by id product to cart 0 by default
 router.post("/:pid/products", (req, res) => {
   let id = parseInt(req.params.pid);
   carrito.addProduct(id).then((result) => {
     res.send(result);
   });
 });
+
+//From here it's more dinamic
 
 //Delete cart by id
 router.delete("/:pid", (req, res) => {
@@ -43,7 +46,7 @@ router.delete("/:pid", (req, res) => {
   });
 });
 
-//Delete product by cart id and product id
+//Delete product by cart id and product id (the first id is for cart id and then product id)
 router.delete("/:pid/products/:pid_prod", (req, res) => {
   let idCart = parseInt(req.params.pid);
   let idProduct = parseInt(req.params.pid_prod);
@@ -52,4 +55,7 @@ router.delete("/:pid/products/:pid_prod", (req, res) => {
   });
 });
 
+router.get("*", (req, res) => {
+  res.status(404).send("La página buscada no existe");
+});
 export default router;

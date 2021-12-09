@@ -145,14 +145,14 @@ class Carrito {
           return {
             status: "error",
             product: null,
-            message: "Producto no encontrado1"
+            message: "Producto no encontrado"
           };
         }
       } else {
         return {
           status: "error",
           product: null,
-          message: "Producto no encontrado2"
+          message: "Producto no encontrado"
         };
       }
     } catch (error) {
