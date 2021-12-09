@@ -19,7 +19,22 @@ router.get("/", (req, res) => {
 });
 router.get("/:pid", (req, res) => {
   const id = parseInt(req.params.pid);
-  container.getById(pid).then((result) => {
+  container.getById(id).then((result) => {
+    res.send(result);
+  });
+});
+
+//Get all products added to the cart
+router.get("/products", (req, res) => {
+  carrito.getAllProducts().then((result) => {
+    res.send(result.payload);
+  });
+});
+
+//Get product from the cart by id
+router.get("/:pid/products", (req, res) => {
+  let id = req.params.pid;
+  carrito.getProductById(id).then((result) => {
     res.send(result);
   });
 });

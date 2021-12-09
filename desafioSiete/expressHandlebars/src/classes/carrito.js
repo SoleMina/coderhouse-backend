@@ -68,6 +68,61 @@ class Carrito {
       };
     }
   }
+
+  async getAllProducts() {
+    try {
+      let data = await fs.promises.readFile(cartURL, "utf-8");
+      data = JSON.parse(data);
+      let products = data[0].products;
+      console.log("EPPP", products);
+      return {
+        status: "success",
+        message: "Productos encontrados",
+        payload: products
+      };
+    } catch (error) {
+      return {
+        status: "Error",
+        message: "No se encontró los productos" + error
+      };
+    }
+  }
+  async getProductById(id) {
+    try {
+      let data = await fs.promises.readFile(cartURL, "utf-8");
+      data = JSON.parse(data);
+      let products = data[0].products;
+      console.log(products);
+
+      let pid = parseInt(id);
+
+      //filter devuelve array, por eso usamos find ya que devuelve el valor como tal, en este caso objeto
+      let index = products.findIndex((product) => product.id === pid);
+      let productSelected = products[index];
+      if (products.length > 0) {
+        if (productSelected) {
+          return { status: "success", payload: productSelected };
+        } else {
+          return {
+            status: "error",
+            product: null,
+            message: "Producto no encontrado1"
+          };
+        }
+      } else {
+        return {
+          status: "error",
+          product: null,
+          message: "Producto no encontrado2"
+        };
+      }
+    } catch (error) {
+      return {
+        status: "Error",
+        message: "No se encontró el producto " + error
+      };
+    }
+  }
 }
 
 export default Carrito;
