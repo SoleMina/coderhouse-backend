@@ -199,6 +199,26 @@ class Carrito {
       };
     }
   }
+  async deleteCartById(id) {
+    try {
+      let data = await fs.promises.readFile(cartURL, "utf-8");
+      data = JSON.parse(data);
+
+      //Get all cart that don't have the id to delete
+      let result = data.filter((product) => product.id !== id);
+      await fs.promises.writeFile(cartURL, JSON.stringify(result, null, 2));
+      return {
+        status: "success",
+        mesagge: "Producto eliminado",
+        payload: result
+      };
+    } catch (error) {
+      return {
+        status: "Error",
+        message: "No se pudo eliminar el producto " + error
+      };
+    }
+  }
 }
 
 export default Carrito;

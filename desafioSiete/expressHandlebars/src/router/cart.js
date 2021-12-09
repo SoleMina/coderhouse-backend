@@ -12,12 +12,6 @@ router.get("/products", (req, res) => {
     res.send(result.payload);
   });
 });
-router.get("/productoppp", (req, res) => {
-  container.getAll().then((result) => {
-    res.send(result);
-  });
-});
-
 //Get product from the cart by id
 router.get("/:pid/products", (req, res) => {
   let id = req.params.pid;
@@ -38,6 +32,14 @@ router.post("/:pid/products", (req, res) => {
   let id = parseInt(req.params.pid);
   carrito.addProduct(id).then((result) => {
     res.send(result);
+  });
+});
+
+//Delete cart by id
+router.delete("/:pid", (req, res) => {
+  let id = parseInt(req.params.pid);
+  carrito.deleteCartById(id).then((result) => {
+    res.send(result.payload);
   });
 });
 

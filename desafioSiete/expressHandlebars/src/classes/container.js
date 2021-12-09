@@ -129,7 +129,7 @@ class Container {
         productURL,
         JSON.stringify(products, null, 2)
       );
-      return { status: "success", mesagge: "Producto eliminado" };
+      return { status: "success", message: "Producto eliminado" };
     } catch (error) {
       return {
         status: "Error",
