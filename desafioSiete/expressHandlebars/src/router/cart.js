@@ -1,33 +1,20 @@
 import express from "express";
-import upload from "../services/uploader.js";
-import Container from "../classes/container.js";
 import Carrito from "../classes/carrito.js";
+import Container from "../classes/container.js";
 import { authMiddleware } from "../utils.js";
-
-const container = new Container();
 const carrito = new Carrito();
+const container = new Container();
 const router = express.Router();
-
-router.get("/", (req, res) => {
-  container.getAll().then((result) => {
-    if (result.status === "success") {
-      res.status(200).send(result.payload);
-    } else {
-      res.status(500).send(result.message);
-    }
-  });
-});
-router.get("/:pid", (req, res) => {
-  const id = parseInt(req.params.pid);
-  container.getById(id).then((result) => {
-    res.send(result);
-  });
-});
 
 //Get all products added to the cart
 router.get("/products", (req, res) => {
   carrito.getAllProducts().then((result) => {
     res.send(result.payload);
+  });
+});
+router.get("/productoppp", (req, res) => {
+  container.getAll().then((result) => {
+    res.send(result);
   });
 });
 
@@ -39,25 +26,28 @@ router.get("/:pid/products", (req, res) => {
   });
 });
 
+//Create a cart
 router.post("/", (req, res) => {
   carrito.create().then((result) => {
     res.send(result);
   });
 });
-router.post("/product", (req, res) => {
-  let product = req.body;
-  carrito.addProduct(product).then((result) => {
+
+//Add product by id product to cart
+router.post("/:pid/products", (req, res) => {
+  let id = parseInt(req.params.pid);
+  carrito.addProduct(id).then((result) => {
     res.send(result);
   });
 });
 
-router.put("/:pid", authMiddleware, (req, res) => {
-  const id = parseInt(req.params.pid);
-  const body = req.body;
-  container.updateProduct(id, body).then((result) => {
+//Delete product by id
+router.delete("/:pid/products/:pid_prod", (req, res) => {
+  let idCart = req.params.pid;
+  let idProduct = req.params.pid_prod;
+  carrito.deleteProductById(idProduct).then((result) => {
     res.send(result);
   });
 });
-router.delete("/:pid");
 
 export default router;

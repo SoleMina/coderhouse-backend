@@ -1,28 +1,38 @@
 import fs from "fs";
 import __dirname from "../utils.js";
-//import Container from "./container.js";
+import Container from "./container.js";
+const container = new Container();
 
+const productURL = __dirname + "/files/productos.txt";
 const cartURL = __dirname + "/files/carrito.txt";
 
 class Carrito {
   async create() {
     try {
-      //Time
-      const timestamp = Date.now();
-      const time = new Date(timestamp);
-      const carritoTime = time.toTimeString().split(" ")[0];
+      let data = await fs.promises.readFile(cartURL, "utf-8");
+      let products = JSON.parse(data);
 
-      let dataObj = {
-        id: cart.length + 1,
-        timestamp: carritoTime,
-        products: []
-      };
+      if (products.length > 0) {
+        //Time
+        const timestamp = Date.now();
+        const time = new Date(timestamp);
+        const carritoTime = time.toTimeString().split(" ")[0];
+        let dataObj = {
+          id: products.length + 1,
+          timestamp: carritoTime,
+          products: []
+        };
+        products.push(dataObj);
+      }
 
       try {
-        await fs.promises.writeFile(cartURL, JSON.stringify(dataObj, null, 2));
+        await fs.promises.writeFile(cartURL, JSON.stringify(products, null, 2));
         return { status: "success", message: "Producto creado" };
       } catch (error) {
-        return { status: "error", message: "No se pudo crear el producto" };
+        return {
+          status: "error",
+          message: "No se pudo crear el producto" + error
+        };
       }
     } catch {
       //Time
@@ -49,17 +59,46 @@ class Carrito {
       }
     }
   }
-  async addProduct(product) {
+  async addProduct(id) {
     try {
-      let data = await fs.promises.readFile(cartURL, "utf-8");
-      data = JSON.parse(data);
-      data[0].products = [...data[0].products, product];
-
-      try {
-        await fs.promises.writeFile(cartURL, JSON.stringify(data, null, 2));
-        return { status: "success", message: "Producto creado" };
-      } catch (error) {
-        return { status: "error", message: "No se pudo crear el productoooo" };
+      let dataProduct = await fs.promises.readFile(productURL, "utf-8");
+      let products = JSON.parse(dataProduct);
+      console.log("PRODUCT", products);
+      console.log("id", id);
+      //filter devuelve array, por eso usamos find ya que devuelve el valor como tal, en este caso objeto
+      let product = products.find((product) => product.id == id);
+      if (products.length > 0) {
+        if (product) {
+          let data = await fs.promises.readFile(cartURL, "utf-8");
+          data = JSON.parse(data);
+          console.log(id);
+          data[0].products = [...data[0].products, product];
+          try {
+            await fs.promises.writeFile(cartURL, JSON.stringify(data, null, 2));
+            return {
+              status: "success",
+              message: "Producto creado",
+              payload: product
+            };
+          } catch (error) {
+            return {
+              status: "error",
+              message: "No se pudo crear el productoooo"
+            };
+          }
+        } else {
+          return {
+            status: "error",
+            product: null,
+            message: "Producto no encontrado1"
+          };
+        }
+      } else {
+        return {
+          status: "error",
+          product: null,
+          message: "Producto no encontrado2"
+        };
       }
     } catch (error) {
       return {
@@ -120,6 +159,43 @@ class Carrito {
       return {
         status: "Error",
         message: "No se encontró el producto " + error
+      };
+    }
+  }
+  async deleteProductById(idProduct) {
+    try {
+      let data = await fs.promises.readFile(cartURL, "utf-8");
+      data = JSON.parse(data);
+      let products = data[0].products;
+      console.log(products);
+
+      let pid = parseInt(idProduct);
+
+      //filter devuelve array, por eso usamos find ya que devuelve el valor como tal, en este caso objeto
+      let index = products.findIndex((product) => product.id === pid);
+      let productSelected = products.filter((product) => product[id] === index);
+
+      if (products.length > 0) {
+        if (productSelected) {
+          return { status: "success", payload: productSelected };
+        } else {
+          return {
+            status: "error",
+            product: null,
+            message: "Producto eliminado"
+          };
+        }
+      } else {
+        return {
+          status: "error",
+          product: null,
+          message: "Producto no eliminado"
+        };
+      }
+    } catch (error) {
+      return {
+        status: "Error",
+        message: "No se pudo eliminar el producto " + error
       };
     }
   }
