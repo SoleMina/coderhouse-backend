@@ -4,7 +4,6 @@ const admin = true;
 //*************EVENTOS DE SOCKET****************+*/
 socket.on("deliverProducts", (data) => {
   let products = data.payload;
-  console.log(products);
   fetch("templates/productTable.handlebars").then((string) =>
     string.text().then((template) => {
       const processedTemplate = Handlebars.compile(template);

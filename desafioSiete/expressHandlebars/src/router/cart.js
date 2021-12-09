@@ -6,7 +6,10 @@ const carrito = new Carrito();
 const container = new Container();
 const router = express.Router();
 
-//Get all products added from cart 0 by default
+//Hola, el entregable es un poco confuso porque no se le pone id del cart en la ruta así que
+//para las primeras partes use el primer cart
+
+//Get all products added from cart
 router.get("/products", (req, res) => {
   carrito.getAllProducts().then((result) => {
     res.send(result.payload);
@@ -55,7 +58,9 @@ router.delete("/:pid/products/:pid_prod", (req, res) => {
   });
 });
 
+/*
 router.get("*", (req, res) => {
   res.status(404).send("La página buscada no existe");
 });
+*/
 export default router;

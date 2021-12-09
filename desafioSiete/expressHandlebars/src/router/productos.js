@@ -6,7 +6,7 @@ import { authMiddleware } from "../utils.js";
 
 const container = new Container();
 const router = express.Router();
-const admin = false;
+const admin = true;
 
 //GETS
 router.get("/", authMiddleware, (req, res) => {
@@ -31,7 +31,7 @@ router.get("/:pid", (req, res) => {
 });
 
 //POSTS
-router.post("/", upload.single("image"), (req, res) => {
+router.post("/", authMiddleware, upload.single("image"), (req, res) => {
   let file = req.file;
   let product = req.body;
   product.thumbnail =
@@ -50,7 +50,7 @@ router.post("/", upload.single("image"), (req, res) => {
 });
 
 //PUTS
-router.put("/:pid", (req, res) => {
+router.put("/:pid", authMiddleware, (req, res) => {
   let id = parseInt(req.params.pid);
   let body = req.body;
   container.updateProduct(id, body).then((result) => {
@@ -59,7 +59,7 @@ router.put("/:pid", (req, res) => {
 });
 
 //DELETES
-router.delete("/:pid", (req, res) => {
+router.delete("/:pid", authMiddleware, (req, res) => {
   let id = parseInt(req.params.pid);
   container.deleteById(id).then((result) => {
     res.send(result);
