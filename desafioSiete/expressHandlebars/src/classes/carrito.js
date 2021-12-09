@@ -162,22 +162,24 @@ class Carrito {
       };
     }
   }
-  async deleteProductById(idProduct) {
+  async deleteProductById(idCart, idProduct) {
     try {
       let data = await fs.promises.readFile(cartURL, "utf-8");
       data = JSON.parse(data);
-      let products = data[0].products;
-      console.log(products);
 
-      let pid = parseInt(idProduct);
+      //Get object with the id
+      let dataResult = data.find((product) => product.id === idCart);
+      let products = dataResult.products;
 
-      //filter devuelve array, por eso usamos find ya que devuelve el valor como tal, en este caso objeto
-      let index = products.findIndex((product) => product.id === pid);
-      let productSelected = products.filter((product) => product[id] === index);
+      let productsResult = products.filter(
+        (product) => product.id !== idProduct
+      );
+      data[idCart - 1].products = productsResult;
 
-      if (products.length > 0) {
-        if (productSelected) {
-          return { status: "success", payload: productSelected };
+      if (data.length > 0) {
+        if (productsResult) {
+          await fs.promises.writeFile(cartURL, JSON.stringify(data, null, 2));
+          return { status: "success", payload: productsResult };
         } else {
           return {
             status: "error",

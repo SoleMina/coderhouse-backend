@@ -43,12 +43,12 @@ router.delete("/:pid", (req, res) => {
   });
 });
 
-//Delete product by id
+//Delete product by cart id and product id
 router.delete("/:pid/products/:pid_prod", (req, res) => {
-  let idCart = req.params.pid;
-  let idProduct = req.params.pid_prod;
-  carrito.deleteProductById(idProduct).then((result) => {
-    res.send(result);
+  let idCart = parseInt(req.params.pid);
+  let idProduct = parseInt(req.params.pid_prod);
+  carrito.deleteProductById(idCart, idProduct).then((result) => {
+    res.send(result.payload);
   });
 });
 
