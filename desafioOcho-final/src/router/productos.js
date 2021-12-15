@@ -3,18 +3,17 @@ import upload from "../services/uploader.js";
 import Container from "../classes/container.js";
 import { io } from "../app.js";
 import { authMiddleware } from "../utils.js";
+import Products from "../services/Products.js";
 
 const container = new Container();
 const router = express.Router();
+const productsService = new Products();
 
 //GETS
 router.get("/", authMiddleware, (req, res) => {
-  console.log(req.query);
-  const status = req.query;
-
-  container.getAll().then((result) => {
+  productsService.getProducts().then((result) => {
     if (result.status === "success") {
-      res.status(200).send(result.payload);
+      res.status(200).send(result);
     } else {
       res.status(500).send(result.message);
     }
@@ -23,8 +22,7 @@ router.get("/", authMiddleware, (req, res) => {
 
 router.get("/:pid", (req, res) => {
   let id = parseInt(req.params.pid);
-  container.getById(id).then((result) => {
-    console.log(result);
+  productsService.getProductById(id).then((result) => {
     res.send(result);
   });
 });
@@ -33,15 +31,16 @@ router.get("/:pid", (req, res) => {
 router.post("/", authMiddleware, upload.single("image"), (req, res) => {
   let file = req.file;
   let product = req.body;
+  console.log(product);
   product.thumbnail =
     req.protocol + "://" + req.hostname + ":8080" + "/images/" + file.filename;
   //req.protocol +"://" + req.hostname + ":8080" + "/resources/images/" + file.filename;
 
-  container.save(product).then((result) => {
+  productsService.registerProduct(product).then((result) => {
     res.send(result);
 
     if (result.status === "success") {
-      container.getAll().then((result) => {
+      productsService.getProducts().then((result) => {
         io.emit("deliverProducts", result);
       });
     }

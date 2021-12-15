@@ -18,7 +18,7 @@ export const io = new Server(server);
 //Import class container
 import Container from "./classes/container.js";
 const container = new Container();
-const admin = false;
+const admin = true;
 
 app.engine("handlebars", engine());
 app.set("views", __dirname + "/views");
