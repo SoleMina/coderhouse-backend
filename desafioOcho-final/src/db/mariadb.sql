@@ -3,8 +3,11 @@ CREATE DATABASE mariadb;
 
 USE mariadb;
 
---CREATE TABLE (Ejemplo manual, en el caso de necesitar pero ya está hecho en config y en Products service)
---Usar código sólo de referencia
+
+--Código de referencia, creo que no lo piden en el desafío pero en caso de necesitar
+--CREATE TABLE (Ejemplo manual, código de referencia, ya está hecho en config y en Productos service)
+
+/* 
 CREATE TABLE products (
     ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     NAME VARCHAR(50) NOT NULL,
@@ -19,3 +22,4 @@ INSERT INTO products (NAME, PRICE, THUMBNAIL, CODIGO, STOCK)
                    ("Macbook Pro", 4500.0, "http://localhost:8080/images/1639668451418mackbook.jpg", "002", 10),
                    ("Impresors Epson", 955.0, "http://localhost:8080/images/1639668481677impresora.jpg", "003", 40);
 
+ */
