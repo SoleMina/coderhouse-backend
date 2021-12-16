@@ -13,7 +13,7 @@ export default class Productos {
             table.string("thumbnail").notNullable();
             table.string("codigo").notNullable();
             table.integer("stock").notNullable().defaultTo(0);
-            table.timestamp(true, true);
+            table.timestamps(true, true);
           })
           .then((result) => {
             console.log("Products table created");
@@ -34,7 +34,11 @@ export default class Productos {
   };
   getProductById = async (id) => {
     try {
-      const product = await mariadb.select().where("id", id).first();
+      const product = await mariadb
+        .table("products")
+        .select()
+        .where("id", id)
+        .first();
       if (product) {
         return { status: "success", payload: product };
       } else {

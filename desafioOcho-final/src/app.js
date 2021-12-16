@@ -107,7 +107,7 @@ app.post(
 );
 
 app.get("/view/products", authMiddleware, (req, res) => {
-  productsService.getProducts().then((result) => {
+  productosService.getProducts().then((result) => {
     let info = result.payload;
     let preparedObject = {
       products: info
@@ -120,7 +120,7 @@ app.get("/view/products", authMiddleware, (req, res) => {
 //ON => escuchador de eventos - lado del servidor
 io.on("connection", async (socket) => {
   console.log(`El socket ${socket.id} se ha conectado`);
-  let products = await productsService.getProducts();
+  let products = await productosService.getProducts();
 
   //Mandar al cliente
   socket.emit("deliverProducts", products);

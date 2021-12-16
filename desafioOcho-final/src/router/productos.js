@@ -3,13 +3,13 @@ import upload from "../services/uploader.js";
 import Container from "../classes/container.js";
 import { io } from "../app.js";
 import { authMiddleware } from "../utils.js";
-import Products from "../services/Products.js";
-import Productos from "../services/Products.js";
+//import Products from "../services/Products.js";
+import Productos from "../services/Productos.js";
 
 const container = new Container();
 const router = express.Router();
-const productsService = new Products();
-const productosService = new Products();
+//const productsService = new Products();
+const productosService = new Productos();
 
 //GETS
 router.get("/", authMiddleware, (req, res) => {
