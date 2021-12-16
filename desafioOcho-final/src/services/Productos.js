@@ -1,10 +1,10 @@
-import { database } from "../config.js";
+import { mariadb } from "../config.js";
 
-export default class Products {
+export default class Productos {
   constructor() {
-    database.schema.hasTable("products").then((result) => {
+    mariadb.schema.hasTable("products").then((result) => {
       if (!result) {
-        database.schema
+        mariadb.schema
           .createTable("products", (table) => {
             table.increments();
             table.string("name").notNullable();
@@ -13,7 +13,7 @@ export default class Products {
             table.string("thumbnail").notNullable();
             table.string("codigo").notNullable();
             table.integer("stock").notNullable().defaultTo(0);
-            table.timestamps(true, true);
+            table.timestamp(true, true);
           })
           .then((result) => {
             console.log("Products table created");
@@ -23,7 +23,7 @@ export default class Products {
   }
   getProducts = async () => {
     try {
-      const products = await database.select().table("products");
+      const products = await mariadb.select().table("products");
       return { status: "success", payload: products };
     } catch (error) {
       return {
@@ -34,7 +34,7 @@ export default class Products {
   };
   getProductById = async (id) => {
     try {
-      const product = await database.select().where("id", id).first();
+      const product = await mariadb.select().where("id", id).first();
       if (product) {
         return { status: "success", payload: product };
       } else {
@@ -52,7 +52,7 @@ export default class Products {
   };
   registerProduct = async (product) => {
     try {
-      const exist = await database
+      const exist = await mariadb
         .table("products")
         .select()
         .where("codigo", product.codigo)
@@ -61,7 +61,7 @@ export default class Products {
       if (exist) {
         return { status: "Error", message: "Product already exist" };
       } else {
-        const result = await database.table("products").insert(product);
+        const result = await mariadb.table("products").insert(product);
         return {
           status: "success",
           message: "Product has been registered",
@@ -74,7 +74,7 @@ export default class Products {
   };
   updateProduct = async (id, body) => {
     try {
-      const productUpdated = await database
+      const productUpdated = await mariadb
         .table("products")
         .where("id", id)
         .update(body)
@@ -96,7 +96,7 @@ export default class Products {
   };
   deleteProductById = async (id) => {
     try {
-      const prod = await database
+      const prod = await mariadb
         .table("products")
         .del()
         .where("id", id)

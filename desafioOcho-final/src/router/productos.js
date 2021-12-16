@@ -4,14 +4,16 @@ import Container from "../classes/container.js";
 import { io } from "../app.js";
 import { authMiddleware } from "../utils.js";
 import Products from "../services/Products.js";
+import Productos from "../services/Products.js";
 
 const container = new Container();
 const router = express.Router();
 const productsService = new Products();
+const productosService = new Products();
 
 //GETS
 router.get("/", authMiddleware, (req, res) => {
-  productsService.getProducts().then((result) => {
+  productosService.getProducts().then((result) => {
     if (result.status === "success") {
       res.status(200).send(result);
     } else {
@@ -22,7 +24,7 @@ router.get("/", authMiddleware, (req, res) => {
 
 router.get("/:pid", (req, res) => {
   let id = parseInt(req.params.pid);
-  productsService.getProductById(id).then((result) => {
+  productosService.getProductById(id).then((result) => {
     res.send(result);
   });
 });
@@ -36,11 +38,19 @@ router.post("/", authMiddleware, upload.single("image"), (req, res) => {
     req.protocol + "://" + req.hostname + ":8080" + "/images/" + file.filename;
   //req.protocol +"://" + req.hostname + ":8080" + "/resources/images/" + file.filename;
 
-  productsService.registerProduct(product).then((result) => {
+  if (
+    !product.name ||
+    !product.description ||
+    !product.price ||
+    !product.codigo
+  )
+    return res.send({ status: "Error", message: "Datos incompletos" });
+
+  productosService.registerProduct(product).then((result) => {
     res.send(result);
 
     if (result.status === "success") {
-      productsService.getProducts().then((result) => {
+      productosService.getProducts().then((result) => {
         io.emit("deliverProducts", result);
       });
     }
@@ -51,7 +61,7 @@ router.post("/", authMiddleware, upload.single("image"), (req, res) => {
 router.put("/:pid", authMiddleware, (req, res) => {
   let id = parseInt(req.params.pid);
   let body = req.body;
-  container.updateProduct(id, body).then((result) => {
+  productosService.updateProduct(id, body).then((result) => {
     res.send(result);
   });
 });
@@ -59,7 +69,7 @@ router.put("/:pid", authMiddleware, (req, res) => {
 //DELETES
 router.delete("/:pid", authMiddleware, (req, res) => {
   let id = parseInt(req.params.pid);
-  container.deleteById(id).then((result) => {
+  productosService.deleteProductById(id).then((result) => {
     res.send(result);
   });
 });

@@ -24,16 +24,6 @@
     "id": 4
   },
   {
-    "title": "Peluche de Osa",
-    "description": "Peluche con vestido.",
-    "price": 144,
-    "thumbnail": "http://localhost:8080/images/1639083716776Peluche-osa.jpg",
-    "codigo": "133",
-    "stock": 3,
-    "timestamp": "16:01:56",
-    "id": 5
-  },
-  {
     "title": "Peluche Pink",
     "description": "Peluche de color rosa",
     "price": 122,

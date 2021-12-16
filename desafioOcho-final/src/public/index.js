@@ -95,9 +95,8 @@ mensajeInput.addEventListener("keyup", (e) => {
   if (e.target.value) {
     if (e.key === "Enter") {
       socket.emit("message", {
-        user: username.value,
-        message: e.target.value,
-        hora: hora
+        username: username.value,
+        message: e.target.value
       });
       mensajeInput.value = "";
     }
@@ -107,7 +106,7 @@ btn.addEventListener("click", (e) => {
   let hora = tiempo();
   if (mensajeInput.value) {
     socket.emit("message", {
-      user: username.value,
+      username: username.value,
       message: mensajeInput.value,
       hora: hora
     });
@@ -118,9 +117,10 @@ btn.addEventListener("click", (e) => {
 //On recibe
 socket.on("messagelog", (data) => {
   let p = document.querySelector("#log");
+  console.log("MAP", data);
   let mensajes = data
     .map((message) => {
-      return `<div><span> <span class="blue">${message.user}</span> <span class="red">[ ${message.hora} ]</span> dice: <span class="green">${message.message}</span> </span></div>`;
+      return `<div><span> <span class="blue">${message.username}</span> <span class="red">[ ${message.created_at} ]</span> dice: <span class="green">${message.message}</span> </span></div>`;
     })
     .join("");
   p.innerHTML = mensajes;

@@ -9,7 +9,8 @@ import { authMiddleware } from "./utils.js";
 //Iniciar
 const app = express();
 const PORT = process.env.PORT || 8080;
-const server = app.listen(PORT, () => {
+
+export const server = app.listen(PORT, () => {
   console.log("Servidor escuchando en: " + PORT);
 });
 
@@ -17,7 +18,13 @@ export const io = new Server(server);
 
 //Import class container
 import Container from "./classes/container.js";
+import Products from "./services/Products.js";
+import Productos from "./services/Productos.js";
+import Messages from "./services/Messages.js";
 const container = new Container();
+const productsService = new Products();
+const productosService = new Productos();
+const messagesService = new Messages();
 const admin = true;
 
 app.engine("handlebars", engine());
@@ -100,7 +107,7 @@ app.post(
 );
 
 app.get("/view/products", authMiddleware, (req, res) => {
-  container.getAll().then((result) => {
+  productsService.getProducts().then((result) => {
     let info = result.payload;
     let preparedObject = {
       products: info
@@ -113,22 +120,33 @@ app.get("/view/products", authMiddleware, (req, res) => {
 //ON => escuchador de eventos - lado del servidor
 io.on("connection", async (socket) => {
   console.log(`El socket ${socket.id} se ha conectado`);
-  let products = await container.getAll();
+  let products = await productsService.getProducts();
 
   //Mandar al cliente
   socket.emit("deliverProducts", products);
 });
 
 //CREATE CENTRO DE MENSAJES
-let messages = [];
-
+let messagesCenter = await messagesService.getAllMessages();
 //On respuesta y emit => envío
 io.on("connection", (socket) => {
   console.log("Cliente conectado");
-  socket.emit("messagelog", messages);
+  socket.emit("messagelog", messagesCenter.payload);
   socket.emit("welcome", "BIENVENIDO A MI SOCKET");
-  socket.on("message", (data) => {
-    messages.push(data);
-    io.emit("messagelog", messages);
+  socket.on("message", async (data) => {
+    messagesService.saveMessage(data);
+    io.emit("messagelog", messagesCenter.payload);
+  });
+});
+
+app.post("/api/messages", (req, res) => {
+  const msg = req.body;
+  messagesService.saveMessage(msg).then((result) => {
+    res.send(result);
+  });
+});
+app.get("/api/messages", (req, res) => {
+  messagesService.getAllMessages().then((result) => {
+    res.send(result);
   });
 });
