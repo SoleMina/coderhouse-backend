@@ -18,11 +18,9 @@ export const io = new Server(server);
 
 //Import class container
 import Container from "./classes/container.js";
-import Products from "./services/Products.js";
 import Productos from "./services/Productos.js";
 import Messages from "./services/Messages.js";
 const container = new Container();
-const productsService = new Products();
 const productosService = new Productos();
 const messagesService = new Messages();
 const admin = true;

@@ -3,12 +3,10 @@ import upload from "../services/uploader.js";
 import Container from "../classes/container.js";
 import { io } from "../app.js";
 import { authMiddleware } from "../utils.js";
-//import Products from "../services/Products.js";
 import Productos from "../services/Productos.js";
 
 const container = new Container();
 const router = express.Router();
-//const productsService = new Products();
 const productosService = new Productos();
 
 //GETS
@@ -66,7 +64,7 @@ router.put("/:pid", authMiddleware, (req, res) => {
   });
 });
 
-//DELETES
+//DELETE
 router.delete("/:pid", authMiddleware, (req, res) => {
   let id = parseInt(req.params.pid);
   productosService.deleteProductById(id).then((result) => {
