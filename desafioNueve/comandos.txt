@@ -1,5 +1,6 @@
 mongo
 show dbs
+use ecommerce
 db
 show collections
 
