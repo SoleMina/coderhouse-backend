@@ -110,7 +110,7 @@ export default class Productos {
 
       return {
         status: "success",
-        message: "Product had been deleted",
+        message: "Product has been deleted",
         payload: prod
       };
     } catch (error) {

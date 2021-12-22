@@ -1,0 +1,46 @@
+show dbs
+db
+show collections
+
+mongo massiveProductsCharge.js
+mongo massiveMessagesCharge.js
+
+db.products.find().pretty()
+db.messages.find().pretty()
+db.products.countDocuments({})
+db.messages.countDocuments({})
+
+CRUD:
+
+A)
+//Agregar producto:
+db.products.insertOne({name: "Laptops asus", description: "High quality", price: 2900, thumbnail: "https://tiendasishop.com/media/catalog/product/m/w/mwp42e_a.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700", codigo: "011", stock: 20, timestamp: new Date()})
+
+B)
+//Listar productos con precio menos a 1000
+ db.products.find({price: {$lt:1000}})
+
+//Listar productos con precio entre 1000 y 3000
+db.products.find({$and: [{price: {$gt:1000}}, {price: {$lt:3000}}]}).pretty();
+
+//Listar productos con precio mayor a 3000
+ db.products.find({price: {$gt:3000}}).pretty()
+
+//Obtener el tercer producto más barato
+db.products.find().sort({price: 1}).skip(2).limit(1).pretty()
+
+C)
+//Actualizar productos, agregando al campo stock de todos con un valor de 100
+db.products.updateMany({}, {$inc: {stock: 100}})
+
+D)
+//Cambiar el stock a cero de los productos con precio mayores a 4000
+ db.products.updateMany({price: {$gt: 4000}}, {$set:{stock: 0}})
+
+E)
+//Borrar los productos con precio menor a 1000
+db.products.deleteMany({price: {$lt:1000}})
+
+6)
+db.createUser({user: "pepe", pwd: "asd456", roles: [{rol: "read", db: "ecommerce"}]})
+mongo -u pepe -p 123
