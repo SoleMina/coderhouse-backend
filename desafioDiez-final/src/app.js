@@ -18,7 +18,7 @@ export const io = new Server(server);
 //Import class containers
 import Container from "./contenedores/container.js";
 const container = new Container();
-const admin = false;
+const admin = true;
 
 app.engine("handlebars", engine());
 app.set("views", __dirname + "/views");
@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hola, este es el desafío 7");
+  res.send("Hola, este es el desafío 10");
 });
 
 //Middleware Routes

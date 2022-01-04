@@ -3,6 +3,7 @@ import upload from "../services/uploader.js";
 import Container from "../contenedores/container.js";
 import { io } from "../app.js";
 import { authMiddleware } from "../utils.js";
+import { products } from "../daos/index.js";
 
 const container = new Container();
 const router = express.Router();
@@ -12,7 +13,7 @@ router.get("/", authMiddleware, (req, res) => {
   console.log(req.query);
   const status = req.query;
 
-  container.getAll().then((result) => {
+  products.getAll().then((result) => {
     if (result.status === "success") {
       res.status(200).send(result.payload);
     } else {
@@ -23,7 +24,7 @@ router.get("/", authMiddleware, (req, res) => {
 
 router.get("/:pid", (req, res) => {
   let id = parseInt(req.params.pid);
-  container.getById(id).then((result) => {
+  products.getProductById(id).then((result) => {
     console.log(result);
     res.send(result);
   });
@@ -37,11 +38,11 @@ router.post("/", authMiddleware, upload.single("image"), (req, res) => {
     req.protocol + "://" + req.hostname + ":8080" + "/images/" + file.filename;
   //req.protocol +"://" + req.hostname + ":8080" + "/resources/images/" + file.filename;
 
-  container.save(product).then((result) => {
+  products.save(product).then((result) => {
     res.send(result);
 
     if (result.status === "success") {
-      container.getAll().then((result) => {
+      products.getAll().then((result) => {
         io.emit("deliverProducts", result);
       });
     }
@@ -52,7 +53,7 @@ router.post("/", authMiddleware, upload.single("image"), (req, res) => {
 router.put("/:pid", authMiddleware, (req, res) => {
   let id = parseInt(req.params.pid);
   let body = req.body;
-  container.updateProduct(id, body).then((result) => {
+  products.updateProduct(id, body).then((result) => {
     res.send(result);
   });
 });
@@ -60,7 +61,7 @@ router.put("/:pid", authMiddleware, (req, res) => {
 //DELETES
 router.delete("/:pid", authMiddleware, (req, res) => {
   let id = parseInt(req.params.pid);
-  container.deleteById(id).then((result) => {
+  products.deleteById(id).then((result) => {
     res.send(result);
   });
 });
