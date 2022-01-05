@@ -90,6 +90,39 @@ export default class MongoContainer {
       };
     }
   };
+  deleteAll = async () => {
+    try {
+      await this.collection.drop();
+      return { status: "success", message: "All documents were deleted" };
+    } catch (error) {
+      return {
+        status: "Error",
+        message: error
+      };
+    }
+  };
+  deleteById = async (id) => {
+    try {
+      await this.collection.deleteOne({ _id: id });
+      return { status: "success", message: "Document deleted" };
+    } catch (error) {
+      return {
+        status: "Error",
+        message: error
+      };
+    }
+  };
+  updateById = async (id, object) => {
+    try {
+      await this.collection.update({ _id: id }, { $set: object });
+      return { status: "success", message: "Document deleted" };
+    } catch (error) {
+      return {
+        status: "Error",
+        message: error
+      };
+    }
+  };
   AddProductToCart = async (cartId, productId) => {
     try {
       let result = await this.collection.updateOne(
