@@ -69,31 +69,43 @@ async function CRUD() {
       timestamp: new Date()
     });
 
-    //LECTURA de todos los documentos existentes de students
-    //const data = await currentCollection.get();
-    //const personitas = data.docs;
-    //const personitasFormateadas = personitas.map((documento) =>
-    //documento.data())
-    //console.log(personitasFormateadas);
-    /*
+    //READ DOCUMENT
+    //LECTURA de todos los documentos
+    const data = await currentCollection.get();
+    const productos = data.docs;
+    const productosFormateados = productos.map((documento) => documento.data());
+    console.log(productosFormateados);
+
     //LECTURA DE UN SOLO DOCUMENT
-    let id = "PaiJwLBZjn5jRTRTcVYD";
+    let id = "QT6IGieKwPNO8u9gpTjw";
     const doc = currentCollection.doc(id);
-    let student = await doc.get();
-    console.log(student.data());
-    */
+    let product = await doc.get();
+    console.log(product.data());
+
     //ACTUALIZAR CON UPDATE
-    //let id = "PaiJwLBZjn5jRTRTcVYD";
-    //const doc = currentCollection.doc(id);
-    //await doc.update({name: "Sara"})
+    let id = "QT6IGieKwPNO8u9gpTjw";
+    const doc = currentCollection.doc(id);
+    await doc.update({ title: "Peluche Rosado" });
+
     //ACTUALIZAR CON SET
-    //let id = "PaiJwLBZjn5jRTRTcVYD";
-    //const doc = currentCollection.doc(id);
-    //await doc.set({ name: "Soledad", last_name: "Perez" });
+    let id = "QT6IGieKwPNO8u9gpTjw";
+    const doc = currentCollection.doc(id);
+    await doc.set({
+      title: "Peluche Pink",
+      description: "Peluche de color rosa",
+      price: 122,
+      thumbnail: "http://localhost:8080/images/1639083782414pelucherosa.jpg",
+      codigo: "001",
+      stock: 8,
+      timestamp: new Date()
+    });
+
     //DELETE
-    //let id = "5e4CcLUJELGgXBxLkzwu";
-    //const doc = currentCollection.doc(id);
-    //await doc.delete();
+    let id = "KtUyFbc9tJqqCP6tNdHt";
+    const doc = currentCollection.doc(id);
+    await doc.delete();
+
+    //
   } catch (err) {
     console.log(err);
   }
