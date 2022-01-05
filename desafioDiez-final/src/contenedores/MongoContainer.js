@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import config from "../config.js";
-import { productService } from "../model/products.js";
+import { productService } from "./model/product.js";
 
 mongoose
   .connect(config.mongo.baseUrl, {
@@ -8,7 +8,7 @@ mongoose
     useUnifiedTopology: true
   })
   .then(async (con) => {
-    let productos = [
+    let products = [
       {
         title: "Peluche de Osa",
         description: "Peluche con vestido.",
@@ -49,11 +49,11 @@ mongoose
         thumbnail:
           "https://falabella.scene7.com/is/image/FalabellaPE/882255227_1?wid=800&hei=800&qlt=70",
         codigo: "005",
-        stock: 15
+        stock: 20
       }
     ];
 
-    await productService.insertMany(productos);
+    await productService.insertMany(products);
   })
   .catch((result) => console.log(result));
 
