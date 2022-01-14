@@ -1,5 +1,3 @@
-"use strict";
-
 import express from "express";
 import ContenedorMemoria from "../contenedores/ContenedorMemoria.js";
 

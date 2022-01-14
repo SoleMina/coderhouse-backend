@@ -1,5 +1,3 @@
-"use strict";
-
 import { generate } from "../utils.js";
 
 export default class ContenedorMemoria {
