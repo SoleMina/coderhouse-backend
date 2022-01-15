@@ -108,7 +108,7 @@ app.post(
 );
 
 app.get("/view/products", authMiddleware, (req, res) => {
-  fproductosService.getProducts().then((result) => {
+  productosService.getProducts().then((result) => {
     let info = result.payload;
     let preparedObject = {
       products: info
@@ -153,10 +153,22 @@ app.get("/api/messages", (req, res) => {
 });
 
 //PRODUCTS FAKER
-app.use("/api/productos", new productsRouter());
+//PRODUCTS FAKER
+app.use("/api/productos-test", new productsRouter());
 
+//postman
 app.get("/products-test", (req, res) => {
   let cant = req.query.cant ? parseInt(req.query.cant) : 10;
   let products = generate(cant);
-  res.send({ products: products });
+  res.send({ productos: products });
+});
+
+//handlebars template
+app.get("/view/productos", (req, res) => {
+  let cant = req.query.cant ? parseInt(req.query.cant) : 10;
+  let products = generate(cant);
+  let preparedObject = {
+    productos: products
+  };
+  res.render("productsFaker", preparedObject);
 });

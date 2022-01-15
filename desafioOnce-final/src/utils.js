@@ -19,7 +19,7 @@ export const generate = (n) => {
     productos.push({
       id: i + 1,
       //product_name: faker.commerce.productName(),
-      product_name: faker.commerce.product(),
+      product: faker.commerce.product(),
       description: faker.commerce.productDescription(),
       price: faker.commerce.price(),
       photo: faker.image.image()
