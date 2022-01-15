@@ -7,7 +7,7 @@ import __dirname from "./utils.js";
 import { authMiddleware } from "./utils.js";
 import { generate } from "./utils.js";
 
-import ProductsRouter from "./route/productsFaker.js";
+import productsRouter from "./router/productsFaker.js";
 
 //Iniciar
 const app = express();
@@ -108,7 +108,7 @@ app.post(
 );
 
 app.get("/view/products", authMiddleware, (req, res) => {
-  productosService.getProducts().then((result) => {
+  fproductosService.getProducts().then((result) => {
     let info = result.payload;
     let preparedObject = {
       products: info
@@ -153,7 +153,7 @@ app.get("/api/messages", (req, res) => {
 });
 
 //PRODUCTS FAKER
-app.use("/api/productos", new ProductsRouter());
+app.use("/api/productos", new productsRouter());
 
 app.get("/products-test", (req, res) => {
   let cant = req.query.cant ? parseInt(req.query.cant) : 10;

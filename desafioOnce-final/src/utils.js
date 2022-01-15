@@ -18,11 +18,11 @@ export const generate = (n) => {
   for (let i = 0; i < n; i++) {
     productos.push({
       id: i + 1,
-      product_name: faker.commerce.productName(),
+      //product_name: faker.commerce.productName(),
+      product_name: faker.commerce.product(),
+      description: faker.commerce.productDescription(),
       price: faker.commerce.price(),
-      image: faker.image.avatar(),
-      photo: faker.image.image(),
-      photo2: faker.image.imageUrl()
+      photo: faker.image.image()
     });
   }
   return productos;

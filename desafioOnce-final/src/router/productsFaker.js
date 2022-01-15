@@ -1,18 +1,18 @@
 import express from "express";
 import ContenedorMemoria from "../contenedores/ContenedorMemoria.js";
 
-const contenedor = new ContenedorMemoria();
-export default class ProductsRouter extends express.Router {
+const contenedorM = new ContenedorMemoria();
+export default class productsRouter extends express.Router {
   constructor() {
     super();
 
     this.get("/", (req, res) => {
-      let products = contenedor.getAll();
-      res.send({ products: products });
+      let productos = contenedorM.getAll();
+      res.send({ products: productos });
     });
     this.post("/", (req, res) => {
-      let products = contenedor.generate();
-      res.send({ products: products });
+      let productos = contenedorM.generate();
+      res.send({ products: productos });
     });
   }
 }
