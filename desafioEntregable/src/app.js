@@ -5,28 +5,22 @@ import upload from "./services/uploader.js";
 import { Server } from "socket.io";
 import __dirname from "./utils.js";
 import { authMiddleware } from "./utils.js";
-import { generate } from "./utils.js";
-import { normalize, denormalize, schema } from "normalizr";
 
+import { generate } from "./utils.js";
 import productsRouter from "./router/productsFaker.js";
 
 //Iniciar
 const app = express();
 const PORT = process.env.PORT || 8080;
-
-export const server = app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log("Servidor escuchando en: " + PORT);
 });
 
 export const io = new Server(server);
 
-//Import class container
-import Container from "./classes/container.js";
-import Productos from "./services/Productos.js";
-import Messages from "./services/Messages.js";
+//Import class containers
+import Container from "./contenedores/container.js";
 const container = new Container();
-const productosService = new Productos();
-const messagesService = new Messages();
 const admin = true;
 
 app.engine("handlebars", engine());
@@ -61,7 +55,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hola, este es el desafío 7");
+  res.send("Hola, este es el desafío 10");
 });
 
 //Middleware Routes
@@ -109,7 +103,7 @@ app.post(
 );
 
 app.get("/view/products", authMiddleware, (req, res) => {
-  productosService.getProducts().then((result) => {
+  container.getAll().then((result) => {
     let info = result.payload;
     let preparedObject = {
       products: info
@@ -122,13 +116,15 @@ app.get("/view/products", authMiddleware, (req, res) => {
 //ON => escuchador de eventos - lado del servidor
 io.on("connection", async (socket) => {
   console.log(`El socket ${socket.id} se ha conectado`);
-  let products = await productosService.getProducts();
+  let products = await container.getAll();
+
   //Mandar al cliente
   socket.emit("deliverProducts", products);
 });
 
 //CREATE CENTRO DE MENSAJES
-let messagesCenter = messagesService.getAllMessages();
+let messagesCenter = await messageService.find();
+console.log(await messageService.find());
 //On respuesta y emit => envío
 io.on("connection", (socket) => {
   console.log("Cliente conectado");
@@ -136,24 +132,10 @@ io.on("connection", (socket) => {
   socket.emit("welcome", "BIENVENIDO A MI SOCKET");
   socket.on("message", async (data) => {
     messagesService.saveMessage(data);
-    console.log(messagesCenter.payload, "HHHHHH");
-    io.emit("messagelog", messagesCenter.payload);
+    io.emit("messagelog", messagesCenter);
   });
 });
 
-app.post("/api/messages", (req, res) => {
-  const msg = req.body;
-  messagesService.saveMessage(msg).then((result) => {
-    res.send(result);
-  });
-});
-app.get("/api/messages", (req, res) => {
-  messagesService.getAllMessages().then((result) => {
-    res.send(result);
-  });
-});
-
-//PRODUCTS FAKER
 //PRODUCTS FAKER
 app.use("/api/productos-test", new productsRouter());
 
@@ -173,17 +155,3 @@ app.get("/view/productos", (req, res) => {
   };
   res.render("productsFaker", preparedObject);
 });
-
-//
-const information = new schema.Entity("information");
-const author = new schema.Entity("name", {
-  information: [information]
-});
-const text = new schema.Entity("text");
-const mensajes = new schema.Entity("mensajes", {
-  author: [author],
-  text: [text]
-});
-
-const normalizedData = normalize(messagesCenter, mensajes);
-console.log(JSON.stringify(normalizedData, null, 2));

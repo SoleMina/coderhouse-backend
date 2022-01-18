@@ -2,13 +2,17 @@ import { database } from "../config.js";
 
 export default class Messages {
   constructor() {
-    database.schema.hasTable("messages").then((result) => {
+    database.schema.hasTable("messagesTotal").then((result) => {
       if (!result) {
         database.schema
-          .createTable("messages", (table) => {
+          .createTable("messagesTotal", (table) => {
             table.increments();
-            table.string("username").notNullable();
-            table.string("message").notNullable();
+            table.string("nombre").notNullable();
+            table.string("apellido").notNullable();
+            table.string("edad").notNullable();
+            table.string("alias").notNullable();
+            table.string("avatar").notNullable();
+            table.string("text").notNullable();
             table.timestamps(true, true);
           })
           .then((result) => {
@@ -20,7 +24,7 @@ export default class Messages {
 
   saveMessage = async (msg) => {
     try {
-      const message = await database.table("messages").insert(msg);
+      const message = await database.table("messagesTotal").insert(msg);
       console.log(message);
       return {
         status: "success",
@@ -36,7 +40,7 @@ export default class Messages {
   };
   getAllMessages = async () => {
     try {
-      const messages = await database.select().table("messages");
+      const messages = await database.select().table("messagesTotal");
       return { status: "success", payload: messages };
     } catch (error) {
       return {

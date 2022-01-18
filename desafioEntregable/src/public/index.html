@@ -35,12 +35,12 @@
         <form id="productForm" name="productForm">
           <h1 class="text-center mb-5">Add Product</h1>
           <div class="form-group mb-3">
-            <label for="name">Name</label>
+            <label for="title">Title</label>
             <input
               class="form-control"
               aria-describedby="emailHelp"
               placeholder="Enter Product Title"
-              name="name"
+              name="title"
               required
             />
           </div>
@@ -112,42 +112,21 @@
 
       <form>
         <div class="form-group">
-          <label for="nombre">Nombre: </label>
-          <br />
-          <input type="text" id="nombre" placeholder="Enter Nombre" required />
-        </div>
-        <div class="form-group">
-          <label for="apellido">Apellido: </label>
+          <label for="username">Email: </label>
           <br />
           <input
-            type="text"
-            id="apellido"
-            placeholder="Enter Apellido"
+            type="email"
+            id="username"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
             required
           />
         </div>
-        <div class="form-group">
-          <label for="edad">Edad: </label>
-          <br />
-          <input type="text" id="edad" placeholder="Enter Edad" required />
-        </div>
-        <div class="form-group">
-          <label for="alias">Alias: </label>
-          <br />
-          <input type="text" id="alias" placeholder="Enter Alias" required />
-        </div>
-        <div class="form-group">
-          <label for="avatar">Avatar: </label>
-          <br />
-          <input type="text" id="avatar" placeholder="Enter Avatar" required />
-        </div>
-
         <div class="form-group mb-3">
-          <label for="text">Texto: </label>
+          <label for="mensaje">Mensaje: </label>
           <br />
-          <input type="text" id="text" />
-          <br />
-          <a class="btn btn-primary mt-2" id="btn-send">Enviar</a>
+          <input type="text" id="mensaje" />
+          <a class="btn btn-primary" id="btn-send">Enviar</a>
         </div>
       </form>
       <div id="container mb-5">
