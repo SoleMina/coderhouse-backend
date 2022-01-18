@@ -23,10 +23,10 @@ export const io = new Server(server);
 //Import class container
 import Container from "./classes/container.js";
 import Productos from "./services/Productos.js";
-import Messages from "./services/Messages.js";
+import MessagesTotal from "./services/Messages.js";
 const container = new Container();
 const productosService = new Productos();
-const messagesService = new Messages();
+const messagesService = new MessagesTotal();
 const admin = true;
 
 app.engine("handlebars", engine());
@@ -128,15 +128,15 @@ io.on("connection", async (socket) => {
 });
 
 //CREATE CENTRO DE MENSAJES
-let messagesCenter = messagesService.getAllMessages();
+let messagesCenter = await messagesService.getAllMessages();
 //On respuesta y emit => envío
 io.on("connection", (socket) => {
   console.log("Cliente conectado");
-  socket.emit("messagelog", messagesCenter);
+  socket.emit("messagelog", messagesCenter.payload);
   socket.emit("welcome", "BIENVENIDO A MI SOCKET");
   socket.on("message", async (data) => {
     messagesService.saveMessage(data);
-    console.log(messagesCenter.payload, "HHHHHH");
+    console.log(messagesCenter.payload, "TESTTTT");
     io.emit("messagelog", messagesCenter.payload);
   });
 });
@@ -175,15 +175,15 @@ app.get("/view/productos", (req, res) => {
 });
 
 //
-const information = new schema.Entity("information");
-const author = new schema.Entity("name", {
-  information: [information]
-});
 const text = new schema.Entity("text");
-const mensajes = new schema.Entity("mensajes", {
-  author: [author],
+const nombre = new schema.Entity("nombre", {
   text: [text]
 });
+const avatar = new schema.Entity("avatar");
+const mensajes = new schema.Entity("mensajes", {
+  nombre: [nombre],
+  avatar: [avatar]
+});
 
-const normalizedData = normalize(messagesCenter, mensajes);
+const normalizedData = normalize(messagesCenter.payload, mensajes);
 console.log(JSON.stringify(normalizedData, null, 2));

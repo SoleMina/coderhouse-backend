@@ -1,6 +1,6 @@
 import { database } from "../config.js";
 
-export default class Messages {
+export default class MessagesTotal {
   constructor() {
     database.schema.hasTable("messagesTotal").then((result) => {
       if (!result) {
@@ -24,12 +24,11 @@ export default class Messages {
 
   saveMessage = async (msg) => {
     try {
-      const message = await database.table("messagesTotal").insert(msg);
-      console.log(message);
+      const messagesTotal = await database.table("messagesTotal").insert(msg);
       return {
         status: "success",
         message: "Message registered",
-        payload: message
+        payload: messagesTotal
       };
     } catch (error) {
       return {
@@ -40,8 +39,8 @@ export default class Messages {
   };
   getAllMessages = async () => {
     try {
-      const messages = await database.select().table("messagesTotal");
-      return { status: "success", payload: messages };
+      const messagesTotal = await database.select().table("messagesTotal");
+      return { status: "success", payload: messagesTotal };
     } catch (error) {
       return {
         status: "Error",
