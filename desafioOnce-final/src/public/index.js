@@ -119,8 +119,7 @@ btn.addEventListener("click", (e) => {
       edad: edad.value,
       alias: alias.value,
       avatar: avatar.value,
-      text: mensajeInput.value,
-      hora: hora
+      text: mensajeInput.value
     });
     mensajeInput.value = "";
   }
@@ -132,7 +131,7 @@ socket.on("messagelog", (data) => {
   console.log(data, "DATAAAAA");
   let mensajes = data
     .map((message) => {
-      return `<div><span> <span class="blue">${message.nombre}</span> <span class="red">[ ${message.created_at} ]</span> dice: <span class="green">${message.text}</span> </span></div>`;
+      return `<div><span> <span class="blue">${message.nombre}</span> <span class="red">[ ${message.created_at} ]</span> dice: <span class="green">${message.text}</span>  <img width='60' style="border-radius:50%" src=${message.avatar} /> </span></div>`;
     })
     .join("");
   p.innerHTML = mensajes;

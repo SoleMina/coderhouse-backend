@@ -136,7 +136,7 @@ io.on("connection", (socket) => {
   socket.emit("welcome", "BIENVENIDO A MI SOCKET");
   socket.on("message", async (data) => {
     messagesService.saveMessage(data);
-    console.log(messagesCenter.payload, "TESTTTT");
+    console.log(messagesCenter.payload);
     io.emit("messagelog", messagesCenter.payload);
   });
 });
@@ -180,10 +180,10 @@ const nombre = new schema.Entity("nombre", {
   text: [text]
 });
 const avatar = new schema.Entity("avatar");
-const mensajes = new schema.Entity("mensajes", {
+const author = new schema.Entity("author", {
   nombre: [nombre],
   avatar: [avatar]
 });
 
-const normalizedData = normalize(messagesCenter.payload, mensajes);
+const normalizedData = normalize(messagesCenter.payload, author);
 console.log(JSON.stringify(normalizedData, null, 2));

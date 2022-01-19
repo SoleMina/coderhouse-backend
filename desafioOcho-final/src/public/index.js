@@ -120,7 +120,7 @@ socket.on("messagelog", (data) => {
   console.log("MAP", data);
   let mensajes = data
     .map((message) => {
-      return `<div><span> <span class="blue">${message.username}</span> <span class="red">[ ${message.created_at} ]</span> dice: <span class="green">${message.message}</span> </span></div>`;
+      return `<div><span> <span class="blue">${message.username}</span> <span class="red">[ ${message.created_at} ]</span> dice: <span class="green">${message.message}</span></span></div>`;
     })
     .join("");
   p.innerHTML = mensajes;
