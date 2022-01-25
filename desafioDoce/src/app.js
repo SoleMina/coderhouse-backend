@@ -71,6 +71,7 @@ io.use(ios(baseSession));
 app.get("/currentUser", (req, res) => {
   res.send(req.session.user);
 });
+
 app.post("/register", async (req, res) => {
   let user = req.body;
   let result = await userService.save(user);
@@ -188,10 +189,6 @@ io.on("connection", (socket) => {
     };
     await messageService.save(message);
     const messages = await messageService.getAll();
-    // const objectToNormalize ={
-    //     id:"BaseId",
-    //     messages:messages
-    // }
     io.emit("messageLog", messages);
   });
 });
