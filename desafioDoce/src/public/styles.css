@@ -60,6 +60,15 @@ td {
   width: 80%;
   margin: 0 auto;
 }
+.logout {
+  right: 13px !important;
+  font-size: 20px;
+  background: pink;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  top: 34px !important;
+}
 
 /*MEDIA QUERIES*/
 @media (max-width: 1150px) {

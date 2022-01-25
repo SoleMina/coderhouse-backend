@@ -66,6 +66,15 @@ fetch("/currentUser")
   .then((result) => result.json())
   .then((json) => {
     user = json;
+    if (user.username) {
+      let div = document.getElementById("loginHome");
+      div.innerHTML = `<h2 class="text-center p-2" style="background-color: #86d589; color: green;">Welcome ${user.username} <a class="position-absolute top-0 end-0 logout" id="logout">Log out</a></h2>`;
+      let logout = document.getElementById("logout");
+
+      logout.addEventListener("click", () => {
+        window.location.replace("pages/logout.html");
+      });
+    }
     console.log(user);
   });
 

@@ -62,7 +62,8 @@ const baseSession = session({
   }),
   resave: false,
   saveUninitialized: false,
-  secret: "CoderChat"
+  secret: "C0d3rH0us3",
+  cookie: { maxAge: 10000 }
 });
 
 app.use(baseSession);
@@ -92,6 +93,12 @@ app.post("/login", async (req, res) => {
     email: user.email
   };
   res.send({ status: "logged" });
+});
+
+app.post("/logout", (req, res) => {
+  const { username } = req.session.user;
+  req.session.user = null;
+  res.send({ status: "success", payload: { username: username } });
 });
 
 //Middleware Routes
@@ -190,5 +197,6 @@ io.on("connection", (socket) => {
     await messageService.save(message);
     const messages = await messageService.getAll();
     io.emit("messageLog", messages);
+    io.emit("user", message.username);
   });
 });
