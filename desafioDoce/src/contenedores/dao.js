@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import config from "../config.js";
 import User from "../daos/users/userMongo.js";
 import Message from "../daos/messages/messagesMongo.js";
 

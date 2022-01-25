@@ -1,5 +1,6 @@
 import express from "express";
 import { engine } from "express-handlebars";
+import config from "./config.js";
 import cors from "cors";
 import upload from "./services/uploader.js";
 import { Server } from "socket.io";
@@ -58,7 +59,7 @@ app.use((req, res, next) => {
 const baseSession = session({
   store: MongoStore.create({
     mongoUrl:
-      "mongodb+srv://kprado:Universitaria137@adoptme.z5s7h.mongodb.net/sessions?retryWrites=true&w=majority"
+      "mongodb+srv://kprado:Coderhouse123@ecommerce.zw86p.mongodb.net/ecommerce?retryWrites=true&w=majority"
   }),
   resave: false,
   saveUninitialized: false,

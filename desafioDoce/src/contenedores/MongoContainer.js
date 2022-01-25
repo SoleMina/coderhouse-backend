@@ -3,13 +3,10 @@ import config from "../config.js";
 import { productService } from "../model/products.js";
 
 mongoose
-  .connect(
-    "mongodb+srv://kprado:Coderhouse123@ecommerce.zw86p.mongodb.net/ecommerce?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    }
-  )
+  .connect(config.mongo.baseUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(async (con) => {
     let products = [
       {
