@@ -1,17 +1,16 @@
 import mongoose from "mongoose";
 import config from "../config.js";
-import { productService } from "./model/product.js";
-import { messageService } from "./model/product.js";
-import User from "../daos/users/userMongo.js";
-import Message from "../daos/messages/messagesMongo.js";
+import { productService } from "../model/products.js";
 
 mongoose
-  .connect(config.mongo.baseUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
+  .connect(
+    "mongodb+srv://kprado:Coderhouse123@ecommerce.zw86p.mongodb.net/ecommerce?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+  )
   .then(async (con) => {
-    /*
     let products = [
       {
         title: "Peluche de Osa",
@@ -58,20 +57,6 @@ mongoose
     ];
 
     await productService.insertMany(products);
-    */
-    const timestamp = {
-      timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
-    };
-    const UserSchema = mongoose.Schema(User.schema, timestamp);
-
-    const MessageSchema = mongoose.Schema(Message.schema, timestamp);
-    MessageSchema.pre("find", function () {
-      this.populate("user");
-    });
-    this.models = {
-      [User.model]: mongoose.model(User.model, UserSchema),
-      [Message.model]: mongoose.model(Message.model, MessageSchema)
-    };
   })
   .catch((result) => console.log(result));
 
@@ -93,6 +78,18 @@ export default class MongoContainer {
       };
     }
   };
+  async insert(object) {
+    if (!this.models[entity])
+      throw new Error(`Entity ${entity} not found or defined`);
+    try {
+      let instance = new this.models[entity](document);
+      let result = await instance.save();
+      return result ? result.toObject() : null;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
   saveOne = async () => {
     try {
       let result = await this.collection.create(object);

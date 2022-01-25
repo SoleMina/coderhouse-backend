@@ -1,5 +1,6 @@
 //Instanciar Socket desde el lado del cliente
 const socket = io();
+
 //*************EVENTOS DE SOCKET****************+*/
 socket.on("deliverProducts", (data) => {
   let products = data.payload;
@@ -56,73 +57,46 @@ document.addEventListener("submit", (event) => {
 });
 
 //*************EVENTOS DE SOCKET PARA CENTRO DE MENSAJE****************+*/
-let mensajeInput = document.querySelector("#mensaje");
+let mensajeInput = document.querySelector("#message");
 let username = document.querySelector("#username");
 let btn = document.querySelector("#btn-send");
 
-const tiempo = () => {
-  let f = new Date();
-  let h = f.getHours();
-  let m = f.getMinutes();
-  let s = f.getSeconds();
-  let d = f.getDay();
-  let month = f.getMonth();
-  let y = f.getFullYear();
+let user;
+fetch("/currentUser")
+  .then((result) => result.json())
+  .then((json) => {
+    user = json;
+    console.log(user);
+  });
 
-  if (h < 10) {
-    h = "0" + h;
-  }
-  if (m < 10) {
-    m = "0" + m;
-  }
-  if (s < 10) {
-    s = "0" + s;
-  }
-  if (d < 10) {
-    d = "0" + d;
-  }
+let input = document.getElementById("message");
 
-  let hora = `${d}/${month}/${y} ${h}:${m}:${s}`;
-  return hora;
-};
-
-let arroba = document.querySelector("#username").value;
-let posicion = arroba.indexOf("@");
-
-mensajeInput.addEventListener("keyup", (e) => {
-  let hora = tiempo();
-
-  if (e.target.value) {
-    if (e.key === "Enter") {
+mensajeInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    if (event.target.value) {
       socket.emit("message", {
-        user: username.value,
-        message: e.target.value,
-        hora: hora
+        message: event.target.value,
+        username: user
       });
-      mensajeInput.value = "";
+      event.target.value = "";
     }
   }
 });
 btn.addEventListener("click", (e) => {
-  let hora = tiempo();
-  if (mensajeInput.value) {
+  if (e.target.value) {
     socket.emit("message", {
-      user: username.value,
-      message: mensajeInput.value,
-      hora: hora
+      message: event.target.value,
+      username: user
     });
-    mensajeInput.value = "";
+    event.target.value = "";
   }
 });
-
-//On recibe
-socket.on("messagelog", (data) => {
-  let p = document.querySelector("#log");
-  let mensajes = data
+socket.on("messageLog", (data) => {
+  let p = document.getElementById("log");
+  let messages = data
     .map((message) => {
-      return `<div><span> <span class="blue">${message.user}</span> <span class="red">[ ${message.hora} ]</span> dice: <span class="green">${message.message}</span> </span></div>`;
+      return `<div><span><span style='color: red; font-weight: bold'>${message.username}</span> dice: <span style='color: blue'>${message.text} </span></span></div>`;
     })
     .join("");
-  p.innerHTML = mensajes;
+  p.innerHTML = messages;
 });
-//*************FIN****************+*/

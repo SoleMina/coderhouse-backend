@@ -8,6 +8,7 @@ import { authMiddleware } from "./utils.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import ios from "socket.io-express-session";
+import { messageService, userService } from "./services/services.js";
 
 //Iniciar
 const app = express();
@@ -92,10 +93,6 @@ app.post("/login", async (req, res) => {
   res.send({ status: "logged" });
 });
 
-app.get("/", (req, res) => {
-  res.send("Hola, este es el desafío 12");
-});
-
 //Middleware Routes
 app.use("/api/products", routerProducts);
 app.use("/api/cart", routerCart);
@@ -171,15 +168,30 @@ io.on("connection", async (socket) => {
 });
 
 //CREATE CENTRO DE MENSAJES
-let messages = [];
+let messages = await messageService.getAll();
+console.log(messages, "THISOOOO");
 
-//On respuesta y emit => envío
 io.on("connection", (socket) => {
   console.log("Cliente conectado");
-  socket.emit("messagelog", messages);
   socket.emit("welcome", "BIENVENIDO A MI SOCKET");
-  socket.on("message", (data) => {
-    messages.push(data);
-    io.emit("messagelog", messages);
+  io.emit("messageLog", messages);
+
+  socket.broadcast.emit("thirdConnection", "Alguien se ha unido al chat");
+  socket.on("message", async (data) => {
+    const user = await userService.findByUsername(
+      socket.handshake.session.user.username
+    );
+    let message = {
+      user: user._id,
+      username: user.username,
+      text: data.message
+    };
+    await messageService.save(message);
+    const messages = await messageService.getAll();
+    // const objectToNormalize ={
+    //     id:"BaseId",
+    //     messages:messages
+    // }
+    io.emit("messageLog", messages);
   });
 });

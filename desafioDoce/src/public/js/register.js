@@ -21,5 +21,6 @@ form.addEventListener("submit", function (event) {
     .then((json) => {
       form.reset();
       alert("User registered");
+      location.replace("../pages/login.html");
     });
 });

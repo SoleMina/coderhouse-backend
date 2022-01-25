@@ -16,10 +16,6 @@ export default class Message {
         ref: "Users",
         required: true
       },
-      username: {
-        type: String,
-        required: true
-      },
       text: {
         type: String,
         required: true
