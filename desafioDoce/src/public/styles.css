@@ -52,7 +52,9 @@ td {
   text-align: center;
   padding-top: 1%;
 }
-#productForm {
+#productForm,
+#registerForm,
+#loginForm {
   background-color: white;
   padding: 2% 4%;
   width: 80%;
