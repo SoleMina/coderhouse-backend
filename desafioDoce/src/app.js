@@ -5,6 +5,9 @@ import upload from "./services/uploader.js";
 import { Server } from "socket.io";
 import __dirname from "./utils.js";
 import { authMiddleware } from "./utils.js";
+import session from "express-session";
+import MongoStore from "connect-mongo";
+import ios from "socket.io-express-session";
 
 //Iniciar
 const app = express();
@@ -51,8 +54,46 @@ app.use((req, res, next) => {
   next();
 });
 
+const baseSession = session({
+  store: MongoStore.create({
+    mongoUrl:
+      "mongodb+srv://kprado:Universitaria137@adoptme.z5s7h.mongodb.net/sessions?retryWrites=true&w=majority"
+  }),
+  resave: false,
+  saveUninitialized: false,
+  secret: "CoderChat"
+});
+
+app.use(baseSession);
+io.use(ios(baseSession));
+
+app.get("/currentUser", (req, res) => {
+  res.send(req.session.user);
+});
+app.post("/register", async (req, res) => {
+  let user = req.body;
+  let result = await userService.save(user);
+  res.send({ message: "User created", user: result });
+});
+
+app.post("/login", async (req, res) => {
+  let { email, password } = req.body;
+  if (!email || !password)
+    return res.status(400).send({ error: "Incomplete fields" });
+  const user = await userService.getBy({ email: email }); //Obtengo al usuario ya de la DB
+  if (!user) return res.status(404).send({ error: "User not found" });
+  if (user.password !== password)
+    return res.status(400).send({ error: "Incorrect Password" });
+  //Hasta aquí, sabemos que va a haber usuario y que cumple su contraseña.
+  req.session.user = {
+    username: user.username,
+    email: user.email
+  };
+  res.send({ status: "logged" });
+});
+
 app.get("/", (req, res) => {
-  res.send("Hola, este es el desafío 10");
+  res.send("Hola, este es el desafío 12");
 });
 
 //Middleware Routes
@@ -100,6 +141,16 @@ app.post(
 );
 
 app.get("/view/products", authMiddleware, (req, res) => {
+  container.getAll().then((result) => {
+    let info = result.payload;
+    let preparedObject = {
+      products: info
+    };
+    res.render("products", preparedObject);
+  });
+});
+
+app.get("/view/register", (req, res) => {
   container.getAll().then((result) => {
     let info = result.payload;
     let preparedObject = {

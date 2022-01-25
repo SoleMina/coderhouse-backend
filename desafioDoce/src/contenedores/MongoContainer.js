@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 import config from "../config.js";
 import { productService } from "./model/product.js";
+import { messageService } from "./model/product.js";
+import User from "../daos/users/userMongo.js";
+import Message from "../daos/messages/messagesMongo.js";
 
 mongoose
   .connect(config.mongo.baseUrl, {
@@ -8,6 +11,7 @@ mongoose
     useUnifiedTopology: true
   })
   .then(async (con) => {
+    /*
     let products = [
       {
         title: "Peluche de Osa",
@@ -54,6 +58,20 @@ mongoose
     ];
 
     await productService.insertMany(products);
+    */
+    const timestamp = {
+      timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
+    };
+    const UserSchema = mongoose.Schema(User.schema, timestamp);
+
+    const MessageSchema = mongoose.Schema(Message.schema, timestamp);
+    MessageSchema.pre("find", function () {
+      this.populate("user");
+    });
+    this.models = {
+      [User.model]: mongoose.model(User.model, UserSchema),
+      [Message.model]: mongoose.model(Message.model, MessageSchema)
+    };
   })
   .catch((result) => console.log(result));
 
