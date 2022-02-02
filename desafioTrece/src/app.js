@@ -63,6 +63,23 @@ app.use((req, res, next) => {
   next();
 });
 
+const connection = mongoose.connect(
+  "mongodb+srv://kprado:Coderhouse123@ecommerce.zw86p.mongodb.net/ecommerce?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
+app.use(
+  session({
+    store: MongoStore.create({
+      mongoUrl:
+        "mongodb+srv://kprado:Coderhouse123@ecommerce.zw86p.mongodb.net/ecommerce?retryWrites=true&w=majority"
+    }),
+    secret: "coderFacebook",
+    resave: false,
+    saveUninitialized: false
+  })
+);
+
 const baseSession = session({
   store: MongoStore.create({
     mongoUrl:
@@ -212,7 +229,7 @@ io.on("connection", (socket) => {
 //AUTH facebook
 app.get(
   "/auth/facebook",
-  passport.authenticate("facebook", { scope: ["email"] }),
+  passport.authenticate("facebook", { scope: ["public_profile"] }),
   (req, res) => {
     //
   }
@@ -221,13 +238,16 @@ app.get(
 app.get(
   "/auth/facebook/callback",
   passport.authenticate("facebook", {
-    failureRedirect: "/paginadeFail",
-    successRedirect: "/success"
+    successRedirect: "/profile",
+    failureRedirect: "/failed"
   }),
   (req, res) => {
     res.send({ message: "Finalmente logeado O/" });
   }
 );
-app.get("/paginadeFail", (re, res) => {
+app.get("/profile", (req, res) => {
+  res.send("You are a valid user");
+});
+app.get("/failed", (req, res) => {
   res.send("User error login");
 });

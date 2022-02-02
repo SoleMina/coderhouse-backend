@@ -47,6 +47,28 @@ export default class Dao {
     let result = await this.models[entity].findOne(options);
     return result ? result.toObject() : null;
   }
+  async getOneByProperty(property, value) {
+    try {
+      let obj = await this.collection.findOne({ [property]: value });
+      if (obj === null) {
+        return returnMessage(true, 404, `${this.objName} no encontrado`, null);
+      }
+      obj = toObj(obj);
+      renameField(obj, "_id", "id");
+      removeField(obj, "__v");
+      return returnMessage(false, 200, `${this.objName} encontrado`, obj);
+    } catch (error) {
+      if (error.name === "CastError") {
+        return returnMessage(true, 400, `${this.objName} no encontrado`, null);
+      }
+      return returnMessage(
+        true,
+        500,
+        `Error al obtener el ${this.objName}`,
+        null
+      );
+    }
+  }
   async findAll(options, entity) {
     if (!this.models[entity])
       throw new Error(`Entity ${entity} not found or defined`);
@@ -59,6 +81,18 @@ export default class Dao {
     try {
       let instance = new this.models[entity](document);
       let result = await instance.save();
+      return result ? result.toObject() : null;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+  async insertUser(document, entity) {
+    if (!this.models[entity])
+      throw new Error(`Entity ${entity} not found or defined`);
+    try {
+      let instance = new this.models[entity](document);
+      let result = await instance.insertOne();
       return result ? result.toObject() : null;
     } catch (error) {
       console.log(error);

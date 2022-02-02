@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const collection = "Usuarios";
 
-const UserSchema = new mongoose.Schema({
+const UsuarioSchema = new mongoose.Schema({
   first_name: String,
   last_name: String,
   username: String,
@@ -12,4 +12,4 @@ const UserSchema = new mongoose.Schema({
   address: String
 });
 
-export const users = mongoose.model(collection, UserSchema);
+export const usuarios = mongoose.model(collection, UsuarioSchema);
