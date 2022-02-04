@@ -63,23 +63,6 @@ app.use((req, res, next) => {
   next();
 });
 
-const connection = mongoose.connect(
-  "mongodb+srv://kprado:Coderhouse123@ecommerce.zw86p.mongodb.net/ecommerce?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
-
-app.use(
-  session({
-    store: MongoStore.create({
-      mongoUrl:
-        "mongodb+srv://kprado:Coderhouse123@ecommerce.zw86p.mongodb.net/ecommerce?retryWrites=true&w=majority"
-    }),
-    secret: "coderFacebook",
-    resave: false,
-    saveUninitialized: false
-  })
-);
-
 const baseSession = session({
   store: MongoStore.create({
     mongoUrl:
