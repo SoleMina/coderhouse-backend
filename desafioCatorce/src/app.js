@@ -234,3 +234,14 @@ app.get("/profile", (req, res) => {
 app.get("/failed", (req, res) => {
   res.send("User error login");
 });
+
+//PROCESS
+app.get("/info", (req, res) => {
+  console.log(process.cwd());
+  console.log(process.pid);
+  console.log(process.version);
+  console.log(process.title);
+  console.log(process.platform);
+  console.log(process.execPath);
+  console.log(JSON.stringify(process.memoryUsage()));
+});
