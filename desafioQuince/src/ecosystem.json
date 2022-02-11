@@ -1,0 +1,45 @@
+{
+  "apps": [
+    {
+      "name": "Server",
+      "script": "app.js",
+      "watch": "true",
+      "args": "-p 8080"
+    },
+    {
+      "name": "Process 1",
+      "script": "app.js",
+      "watch": "true",
+      "args": "-p 3001",
+      "exec_mode": "cluster"
+    },
+    {
+      "name": "Process 2",
+      "script": "app.js",
+      "watch": "true",
+      "args": "-p 3002",
+      "exec_mode": "cluster"
+    },
+    {
+      "name": "Process 3",
+      "script": "app.js",
+      "watch": "true",
+      "args": "-p 3003",
+      "exec_mode": "cluster"
+    },
+    {
+      "name": "Process 4",
+      "script": "app.js",
+      "watch": "true",
+      "args": "-p 3004",
+      "exec_mode": "cluster"
+    },
+    {
+      "name": "Process 5",
+      "script": "app.js",
+      "watch": "true",
+      "args": "3005",
+      "exec_mode": "cluster"
+    }
+  ]
+}
