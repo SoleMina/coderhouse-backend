@@ -1,0 +1,747 @@
+Statistical profiling result from isolateNoBloqueante.log, (1152 ticks, 8 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+     34    3.0%          /usr/lib/system/libsystem_pthread.dylib
+      3    0.3%          /usr/lib/system/libsystem_malloc.dylib
+      2    0.2%          /usr/lib/system/libsystem_c.dylib
+      1    0.1%          /usr/lib/system/libsystem_platform.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      1    0.1%    0.1%  LazyCompile: *resolve node:path:1091:10
+      1    0.1%    0.1%  LazyCompile: *normalizeString node:path:66:25
+      1    0.1%    0.1%  Function: ^tryReadSync node:fs:429:21
+      1    0.1%    0.1%  Function: ^require node:internal/modules/cjs/helpers:101:31
+      1    0.1%    0.1%  Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1    0.1%    0.1%  Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1    0.1%    0.1%  Function: ^<anonymous> node:internal/fs/utils:357:35
+
+ [C++]:
+   ticks  total  nonlib   name
+    237   20.6%   21.3%  T node::contextify::ContextifyContext::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+    202   17.5%   18.2%  T node::native_module::NativeModuleEnv::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+    177   15.4%   15.9%  t node::fs::Read(v8::FunctionCallbackInfo<v8::Value> const&)
+    167   14.5%   15.0%  t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+    113    9.8%   10.2%  T ___guarded_open_np
+     79    6.9%    7.1%  t node::fs::InternalModuleReadJSON(v8::FunctionCallbackInfo<v8::Value> const&)
+     16    1.4%    1.4%  T _getaudit
+      6    0.5%    0.5%  t std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)
+      6    0.5%    0.5%  t node::fs::InternalModuleStat(v8::FunctionCallbackInfo<v8::Value> const&)
+      6    0.5%    0.5%  T _mach_vm_purgable_control
+      6    0.5%    0.5%  T _freopen
+      5    0.4%    0.4%  t node::fs::Open(v8::FunctionCallbackInfo<v8::Value> const&)
+      5    0.4%    0.4%  t ___inaddr_to_index
+      4    0.3%    0.4%  t std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> > std::__1::__pad_and_output<char, std::__1::char_traits<char> >(std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> >, char const*, char const*, char const*, std::__1::ios_base&, char)
+      4    0.3%    0.4%  t _szone_malloc_should_clear
+      4    0.3%    0.4%  t __os_unfair_lock_lock_slow
+      4    0.3%    0.4%  t ___vfwscanf
+      4    0.3%    0.4%  T std::__1::basic_istream<wchar_t, std::__1::char_traits<wchar_t> >::getline(wchar_t*, long)
+      3    0.3%    0.3%  T std::__1::num_get<wchar_t, std::__1::istreambuf_iterator<wchar_t, std::__1::char_traits<wchar_t> > >::do_get(std::__1::istreambuf_iterator<wchar_t, std::__1::char_traits<wchar_t> >, std::__1::istreambuf_iterator<wchar_t, std::__1::char_traits<wchar_t> >, std::__1::ios_base&, unsigned int&, void*&) const
+      3    0.3%    0.3%  T node::binding::GetInternalBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+      3    0.3%    0.3%  T node::binding::DLOpen(v8::FunctionCallbackInfo<v8::Value> const&)
+      3    0.3%    0.3%  T _fputws_l
+      3    0.3%    0.3%  T _fputwc
+      2    0.2%    0.2%  t std::__1::vector<std::__1::locale::facet*, std::__1::__sso_allocator<std::__1::locale::facet*, 28ul> >::deallocate()
+      2    0.2%    0.2%  t std::__1::locale::__imp::__imp(std::__1::locale::__imp const&, std::__1::locale::__imp const&, int)
+      2    0.2%    0.2%  t node::fs::FStat(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.2%    0.2%  t __os_unfair_lock_unlock_slow
+      2    0.2%    0.2%  T _vm_allocate
+      2    0.2%    0.2%  T _mach_msg_server_once
+      2    0.2%    0.2%  T __swrite
+      1    0.1%    0.1%  t void node::Buffer::(anonymous namespace)::StringSlice<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.1%  t std::__1::basic_ostream<char, std::__1::char_traits<char> >::basic_ostream(std::__1::basic_ostream<char, std::__1::char_traits<char> >&&)
+      1    0.1%    0.1%  t node::fs::LStat(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.1%  t node::EnvGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+      1    0.1%    0.1%  t _szone_pressure_relief
+      1    0.1%    0.1%  t _szone_batch_free
+      1    0.1%    0.1%  t _malloc_zone_register_while_locked
+      1    0.1%    0.1%  t _insert_node
+      1    0.1%    0.1%  t __dispatch_mgr_priority_raise
+      1    0.1%    0.1%  t ___vfprintf
+      1    0.1%    0.1%  t ___printf_render_vis
+      1    0.1%    0.1%  t ___fputwc
+      1    0.1%    0.1%  t ___find_warguments
+      1    0.1%    0.1%  t __GBK_init
+      1    0.1%    0.1%  T std::__1::recursive_timed_mutex::~recursive_timed_mutex()
+      1    0.1%    0.1%  T node::loader::ModuleWrap::New(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.1%  T node::i18n::ConverterObject::Decode(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.1%  T node::fs::Close(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.1%  T _os_unfair_lock_assert_not_owner
+      1    0.1%    0.1%  T _catopen
+      1    0.1%    0.1%  T __sread
+      1    0.1%    0.1%  T ___malloc_init
+      1    0.1%    0.1%  T ___fread
+
+ [Summary]:
+   ticks  total  nonlib   name
+      7    0.6%    0.6%  JavaScript
+   1097   95.2%   98.7%  C++
+     11    1.0%    1.0%  GC
+     40    3.5%          Shared libraries
+      8    0.7%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+   1079   99.9%   93.7%  t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    0.1%    0.1%  T node::loader::ModuleWrap::Link(v8::FunctionCallbackInfo<v8::Value> const&)
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    237   20.6%  T node::contextify::ContextifyContext::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+    237  100.0%    t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+    222   93.7%      Function: ^compileFunction node:vm:308:25
+    208   93.7%        Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+    204   98.1%          Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+    158   77.5%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+     46   22.5%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      4    1.9%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      4  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+     14    6.3%        LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+     14  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+     14  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+     15    6.3%      LazyCompile: ~compileFunction node:vm:308:25
+     15  100.0%        LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+     15  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+     15  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+
+    202   17.5%  T node::native_module::NativeModuleEnv::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+    202  100.0%    t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+    166   82.2%      Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+    138   83.1%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+     25   18.1%          Function: ~<anonymous> node:crypto:1:1
+     25  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     21   15.2%          Function: ~<anonymous> node:http:1:1
+     21  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     11    8.0%          Function: ~<anonymous> node:tty:1:1
+     11  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     10    7.2%          Function: ~<anonymous> node:_http_client:1:1
+     10  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      9    6.5%          Function: ~<anonymous> node:internal/child_process:1:1
+      9  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      8    5.8%          LazyCompile: ~initCJSParse node:internal/modules/esm/translators:63:28
+      8  100.0%            LazyCompile: ~commonjsStrategy node:internal/modules/esm/translators:168:60
+      8    5.8%          Function: ~<anonymous> node:child_process:1:1
+      8  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      7    5.1%          Function: ~<anonymous> node:internal/crypto/hkdf:1:1
+      7  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      6    4.3%          LazyCompile: ~lazyRequire node:internal/crypto/util:67:21
+      6  100.0%            LazyCompile: ~get node:crypto:287:8
+      5    3.6%          Function: ~<anonymous> node:assert:1:1
+      5  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4    2.9%          Function: ~<anonymous> node:cluster:1:1
+      4  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4    2.9%          Function: ~<anonymous> node:_http_common:1:1
+      4  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    2.2%          LazyCompile: ~lazyLoadStreams node:fs:2841:25
+      3  100.0%            LazyCompile: ~get ReadStream node:fs:2984:17
+      3    2.2%          Function: ~<anonymous> node:internal/crypto/pbkdf2:1:1
+      3  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    2.2%          Function: ~<anonymous> node:internal/cluster/primary:1:1
+      3  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    1.4%          LazyCompile: ~get BlockList node:net:1779:16
+      2  100.0%            t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      2    1.4%          Function: ~<anonymous> node:internal/crypto/util:1:1
+      2  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     25   15.1%        Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+     25  100.0%          Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+     25  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      3    1.8%        LazyCompile: ~compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      2   66.7%          Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      2  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1   33.3%          LazyCompile: ~loadNativeModule node:internal/modules/cjs/helpers:44:26
+      1  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+     36   17.8%      LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     36  100.0%        LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      6   16.7%          LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:421:29
+      6  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      5   13.9%          Function: ~<anonymous> node:internal/process/esm_loader:1:1
+      5  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      5   13.9%          Function: ~<anonymous> node:internal/modules/esm/loader:1:1
+      5  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    8.3%          Function: ~<anonymous> node:internal/modules/esm/load:1:1
+      3  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    8.3%          Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      3  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    8.3%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    5.6%          LazyCompile: ~initializeSourceMapsHandlers node:internal/bootstrap/pre_execution:460:38
+      2  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      2    5.6%          Function: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          LazyCompile: ~initializeReport node:internal/bootstrap/pre_execution:182:26
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1    2.8%          Function: ~<anonymous> node:internal/modules/esm/translators:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          Function: ~<anonymous> node:internal/modules/esm/resolve:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          Function: ~<anonymous> node:internal/modules/esm/module_map:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          Function: ~<anonymous> node:internal/modules/cjs/loader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          Function: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          Function: ~<anonymous> node:internal/bootstrap/pre_execution:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+
+    177   15.4%  t node::fs::Read(v8::FunctionCallbackInfo<v8::Value> const&)
+    177  100.0%    t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+    166   93.8%      Function: ^readSync node:fs:684:18
+    165   99.4%        Function: ^tryReadSync node:fs:429:21
+    164   99.4%          Function: ^readFileSync node:fs:450:22
+    122   74.4%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+     38   23.2%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      4    2.4%            LazyCompile: ~Module._extensions..json node:internal/modules/cjs/loader:1158:39
+     11    6.2%      LazyCompile: ~readSync node:fs:684:18
+     11  100.0%        LazyCompile: ~tryReadSync node:fs:429:21
+     11  100.0%          LazyCompile: ~readFileSync node:fs:450:22
+      8   72.7%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      3   27.3%            LazyCompile: ~cjsPreparseModuleExports node:internal/modules/esm/translators:212:34
+
+    167   14.5%  t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+    101   60.5%    t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+     10    9.9%      t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1   10.0%        LazyCompile: ~populateConstructorExports /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/http-errors/index.js:264:37
+      1  100.0%          Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/http-errors/index.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1   10.0%        LazyCompile: ~parse /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/semver/functions/parse.js:6:15
+      1  100.0%          LazyCompile: ~module.exports.evaluate /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/@mapbox/node-pre-gyp/lib/util/versioning.js:277:35
+      1  100.0%            LazyCompile: ~exports.find /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/@mapbox/node-pre-gyp/lib/pre-binding.js:17:24
+      1   10.0%        LazyCompile: ~callSiteToString /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/depd/lib/compat/index.js:21:76
+      1  100.0%          LazyCompile: ~get /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/depd/lib/compat/index.js:54:16
+      1  100.0%            Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/depd/index.js:1:1
+      1   10.0%        LazyCompile: ~<anonymous> file:///Users/usuario/Desktop/node-projects/Clases/clase32/app.js:12:20
+      1  100.0%          LazyCompile: ~emit node:events:340:44
+      1  100.0%            LazyCompile: ~emitErrorNT node:net:1360:21
+      1   10.0%        LazyCompile: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/@mapbox/node-pre-gyp/lib/util/versioning.js:23:36
+      1  100.0%          t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1  100.0%            Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/@mapbox/node-pre-gyp/lib/util/versioning.js:1:1
+      1   10.0%        Function: ~<anonymous> node:internal/crypto/keys:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1   10.0%        Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/express/lib/express.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1   10.0%        Function: ^stat node:internal/modules/cjs/loader:151:14
+      1  100.0%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      1  100.0%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1   10.0%        Function: ^readPackageScope node:internal/modules/cjs/loader:321:26
+      1  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1   10.0%        Function: ^getOwn node:internal/bootstrap/loaders:180:16
+      1  100.0%          Function: ^syncExports node:internal/bootstrap/loaders:287:14
+      1  100.0%            LazyCompile: ~<anonymous> node:internal/bootstrap/loaders:273:15
+      4    4.0%      LazyCompile: ~Module._extensions..json node:internal/modules/cjs/loader:1158:39
+      4  100.0%        Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      4  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      4  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      4    4.0%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      4  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      4  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      4    4.0%      Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      4  100.0%        Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      3   75.0%          Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      3  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1   25.0%          LazyCompile: ~tryPackage node:internal/modules/cjs/loader:338:20
+      1  100.0%            LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      3    3.0%      Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      2   66.7%        Function: ^resolveExports node:internal/modules/cjs/loader:472:24
+      2  100.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      2  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1   33.3%        LazyCompile: ~resolveExports node:internal/modules/cjs/loader:472:24
+      1  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      2    2.0%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:81:28
+      2  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      2  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    2.0%      LazyCompile: ~WriteStream node:tty:85:21
+      2  100.0%        LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1   50.0%          LazyCompile: ~getStdout node:internal/bootstrap/switches/is_main_thread:121:19
+      1  100.0%            LazyCompile: ~colorSupport /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/color-support/index.js:39:23
+      1   50.0%          LazyCompile: ~getStderr node:internal/bootstrap/switches/is_main_thread:133:19
+      1  100.0%            Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/debug/src/node.js:1:1
+      2    2.0%      LazyCompile: ~Module._resolveLookupPaths node:internal/modules/cjs/loader:667:38
+      2  100.0%        LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      2  100.0%          LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+      1   50.0%            LazyCompile: ~Module.require node:internal/modules/cjs/loader:997:36
+      1   50.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      2    2.0%      Function: ^stat node:internal/modules/cjs/loader:151:14
+      1   50.0%        Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      1  100.0%          Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1   50.0%        Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2    2.0%      Function: ^readSync node:fs:684:18
+      2  100.0%        Function: ^tryReadSync node:fs:429:21
+      2  100.0%          Function: ^readFileSync node:fs:450:22
+      2  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      2    2.0%      Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      2  100.0%        Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2  100.0%          Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      2  100.0%            Function: ^require node:internal/modules/cjs/helpers:101:31
+      4    2.4%    Function: ^resolve node:path:1091:10
+      1   25.0%      LazyCompile: ~readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%        LazyCompile: ~readPackageScope node:internal/modules/cjs/loader:321:26
+      1  100.0%          LazyCompile: ~trySelf node:internal/modules/cjs/loader:441:17
+      1  100.0%            LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1   25.0%      LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%        LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%          LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            LazyCompile: ~Module.require node:internal/modules/cjs/loader:997:36
+      1   25.0%      Function: ^resolveExports node:internal/modules/cjs/loader:472:24
+      1  100.0%        Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1   25.0%      Function: ^realpathSync node:fs:2408:22
+      1  100.0%        Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      1  100.0%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      3    1.8%    Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      3  100.0%      Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      3  100.0%        Function: ^require node:internal/modules/cjs/helpers:101:31
+      1   33.3%          Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/send/index.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1   33.3%          Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/semver/functions/parse.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1   33.3%          Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/gauge/render-template.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      3    1.8%    Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      2   66.7%      LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      2  100.0%        Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2  100.0%          Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      2  100.0%            Function: ^require node:internal/modules/cjs/helpers:101:31
+      1   33.3%      Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%        Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%          Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      1  100.0%            Function: ^require node:internal/modules/cjs/helpers:101:31
+      2    1.2%    Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      2  100.0%      Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      1   50.0%        Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      1  100.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1   50.0%        Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1  100.0%          Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      2    1.2%    Function: ^readFileSync node:fs:450:22
+      1   50.0%      LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%        Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      1   50.0%      Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%        Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      2    1.2%    Function: ^compileFunction node:vm:308:25
+      2  100.0%      Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+      2  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1   50.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1   50.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      2    1.2%    Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      2  100.0%      Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2  100.0%        Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      2  100.0%          Function: ^require node:internal/modules/cjs/helpers:101:31
+      1   50.0%            Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/semver/index.js:1:1
+      1   50.0%            Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/semver/classes/semver.js:1:1
+      2    1.2%    Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      2  100.0%      Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2  100.0%        Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      2  100.0%          Function: ^require node:internal/modules/cjs/helpers:101:31
+      1   50.0%            Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/send/index.js:1:1
+      1   50.0%            Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/are-we-there-yet/lib/tracker-stream.js:1:1
+
+    113    9.8%  T ___guarded_open_np
+     92   81.4%    t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      9    9.8%      LazyCompile: ~realpathSync node:fs:2408:22
+      9  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      9  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      9  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      8    8.7%      LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      8  100.0%        LazyCompile: ~getStderr node:internal/bootstrap/switches/is_main_thread:133:19
+      8  100.0%          Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/debug/src/node.js:1:1
+      8  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      7    7.6%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      7  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      7  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      7  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      6    6.5%      t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1   16.7%        LazyCompile: ~getOwn node:internal/bootstrap/loaders:180:16
+      1  100.0%          LazyCompile: ~syncExports node:internal/bootstrap/loaders:287:14
+      1  100.0%            LazyCompile: ~<anonymous> node:internal/bootstrap/loaders:273:15
+      1   16.7%        LazyCompile: ~callSiteToString /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/depd/lib/compat/index.js:21:76
+      1  100.0%          LazyCompile: ~get /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/depd/lib/compat/index.js:54:16
+      1  100.0%            Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/depd/index.js:1:1
+      1   16.7%        LazyCompile: ~<anonymous> node:internal/deps/cjs-module-lexer/dist/lexer:1:1252
+      1  100.0%          LazyCompile: ~init node:internal/deps/cjs-module-lexer/dist/lexer:1:1235
+      1  100.0%            LazyCompile: ~initCJSParse node:internal/modules/esm/translators:63:28
+      1   16.7%        LazyCompile: ~<anonymous> file:///Users/usuario/Desktop/node-projects/Clases/clase32/app.js:12:20
+      1  100.0%          LazyCompile: ~emit node:events:340:44
+      1  100.0%            LazyCompile: ~emitErrorNT node:net:1360:21
+      1   16.7%        Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/express/lib/router/route.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1   16.7%        Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/debug/src/node.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      6    6.5%      LazyCompile: ~onParseError node:internal/url:551:22
+      6  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      6  100.0%          LazyCompile: ~URL node:internal/url:620:14
+      6  100.0%            LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:981:24
+      2    2.2%      LazyCompile: ~formatRaw node:internal/util/inspect:796:19
+      2  100.0%        LazyCompile: ~formatValue node:internal/util/inspect:726:21
+      2  100.0%          LazyCompile: ~inspect node:internal/util/inspect:286:17
+      2  100.0%            LazyCompile: ~formatWithOptionsInternal node:internal/util/inspect:1891:35
+      2    2.2%      LazyCompile: ~emit node:events:340:44
+      1   50.0%        LazyCompile: ~removeListener node:events:557:28
+      1  100.0%          LazyCompile: ~handleMainPromise node:internal/modules/run_main:55:33
+      1  100.0%            t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1   50.0%        LazyCompile: ~_addListener node:events:418:22
+      1  100.0%          LazyCompile: ~addListener node:events:486:58
+      1  100.0%            LazyCompile: ~setupWarningHandler node:internal/bootstrap/pre_execution:141:29
+      2    2.2%      LazyCompile: ~defaultTriggerAsyncIdScope node:internal/async_hooks:445:36
+      2  100.0%        LazyCompile: ~setupListenHandle node:net:1287:27
+      2  100.0%          LazyCompile: ~listenInCluster node:net:1372:25
+      2  100.0%            LazyCompile: ~Server.listen node:net:1414:35
+      2    2.2%      LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      2  100.0%        LazyCompile: ~Socket node:net:283:16
+      2  100.0%          LazyCompile: ~WriteStream node:tty:85:21
+      2  100.0%            LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      2    2.2%      Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/debug/src/node.js:1:1
+      2  100.0%        LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      2  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      2  100.0%            LazyCompile: ~Module.load node:internal/modules/cjs/loader:969:33
+      1    1.1%      Script: ~<anonymous> file:///Users/usuario/Desktop/node-projects/Clases/clase32/app.js:1:1
+      1  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1  100.0%          T node::loader::ModuleWrap::Evaluate(v8::FunctionCallbackInfo<v8::Value> const&)
+      1  100.0%            LazyCompile: ~run node:internal/modules/esm/module_job:180:12
+      1    1.1%      LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+      1  100.0%        LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            LazyCompile: ~Module.load node:internal/modules/cjs/loader:969:33
+      1    1.1%      LazyCompile: ~value node:internal/console/constructor:320:20
+      1  100.0%        LazyCompile: ~log node:internal/console/constructor:358:6
+      1  100.0%          t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1  100.0%            LazyCompile: ~<anonymous> file:///Users/usuario/Desktop/node-projects/Clases/clase32/app.js:12:20
+      1    1.1%      LazyCompile: ~stylizeWithColor node:internal/util/inspect:521:26
+      1  100.0%        LazyCompile: ~formatPrimitive node:internal/util/inspect:1382:25
+      1  100.0%          LazyCompile: ~formatValue node:internal/util/inspect:726:21
+      1  100.0%            LazyCompile: ~formatProperty node:internal/util/inspect:1672:24
+      1    1.1%      LazyCompile: ~stringify node:internal/modules/esm/translators:95:19
+      1  100.0%        LazyCompile: ~moduleStrategy node:internal/modules/esm/translators:134:56
+      1  100.0%          LazyCompile: ~moduleProvider node:internal/modules/esm/loader:229:28
+      1  100.0%            t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    1.1%      LazyCompile: ~setupListenHandle node:net:1287:27
+      1  100.0%        LazyCompile: ~listenInCluster node:net:1372:25
+      1  100.0%          LazyCompile: ~Server.listen node:net:1414:35
+      1  100.0%            LazyCompile: ~listen /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/express/lib/application.js:616:29
+      1    1.1%      LazyCompile: ~resolve node:path:1091:10
+      1  100.0%        LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:81:28
+      1  100.0%          LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%            Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    1.1%      LazyCompile: ~resolve node:internal/modules/esm/loader:402:16
+      1  100.0%        LazyCompile: ~getModuleJob node:internal/modules/esm/loader:221:21
+      1  100.0%          LazyCompile: ~import node:internal/modules/esm/loader:268:15
+      1  100.0%            LazyCompile: ~<anonymous> node:internal/modules/run_main:47:29
+      1    1.1%      LazyCompile: ~readFileSync node:fs:450:22
+      1  100.0%        LazyCompile: ~cjsPreparseModuleExports node:internal/modules/esm/translators:212:34
+      1  100.0%          LazyCompile: ~commonjsStrategy node:internal/modules/esm/translators:168:60
+      1  100.0%            t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    1.1%      LazyCompile: ~readFile node:internal/fs/promises:786:24
+      1  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    1.1%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    1.1%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    1.1%      LazyCompile: ~onParseComplete node:internal/url:532:25
+      1  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1  100.0%          LazyCompile: ~URL node:internal/url:620:14
+      1  100.0%            LazyCompile: ~defaultGetSource node:internal/modules/esm/get_source:25:32
+      1    1.1%      LazyCompile: ~nopt /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/nopt/lib/nopt.js:26:15
+      1  100.0%        LazyCompile: ~parseOpts /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/@mapbox/node-pre-gyp/lib/node-pre-gyp.js:144:37
+      1  100.0%          LazyCompile: ~Run /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/@mapbox/node-pre-gyp/lib/node-pre-gyp.js:78:13
+      1  100.0%            LazyCompile: ~exports.find /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/@mapbox/node-pre-gyp/lib/pre-binding.js:17:24
+      1    1.1%      LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      1  100.0%        LazyCompile: ~defaultTriggerAsyncIdScope node:internal/async_hooks:445:36
+      1  100.0%          LazyCompile: ~setupListenHandle node:net:1287:27
+      1  100.0%            LazyCompile: ~listenInCluster node:net:1372:25
+      1    1.1%      LazyCompile: ~moduleStrategy node:internal/modules/esm/translators:134:56
+      1  100.0%        LazyCompile: ~moduleProvider node:internal/modules/esm/loader:229:28
+      1  100.0%          t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    1.1%      LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:917:23
+      1  100.0%        LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:981:24
+      1  100.0%          LazyCompile: ~resolve node:internal/modules/esm/loader:402:16
+      1  100.0%            LazyCompile: ~getModuleJob node:internal/modules/esm/loader:221:21
+      1    1.1%      LazyCompile: ~moduleProvider node:internal/modules/esm/loader:229:28
+      1  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    1.1%      LazyCompile: ~isignored /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/depd/index.js:135:20
+      1  100.0%        LazyCompile: ~depd /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/depd/index.js:105:15
+      1  100.0%          Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/body-parser/index.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1    1.1%      LazyCompile: ~getStatsFromBinding node:internal/fs/utils:530:29
+      1  100.0%        LazyCompile: ~statSync node:fs:1528:18
+      1  100.0%          LazyCompile: ~tryStatSync node:internal/modules/esm/resolve:183:3
+      1  100.0%            LazyCompile: ~finalizeResolution node:internal/modules/esm/resolve:389:28
+      1    1.1%      LazyCompile: ~getPackageScopeConfig node:internal/modules/esm/resolve:247:31
+      1  100.0%        LazyCompile: ~getPackageType node:internal/modules/esm/resolve:785:24
+      1  100.0%          LazyCompile: ~file: node:internal/modules/esm/get_format:56:10
+      1  100.0%            LazyCompile: ~defaultGetFormat node:internal/modules/esm/get_format:81:26
+      1    1.1%      LazyCompile: ~getOptionValue node:internal/options:39:24
+      1  100.0%        LazyCompile: ~setupDebugEnv node:internal/bootstrap/pre_execution:193:23
+      1  100.0%          LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%            Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    1.1%      LazyCompile: ~getModuleJob node:internal/modules/esm/loader:221:21
+      1  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    1.1%      LazyCompile: ~get href node:internal/url:734:11
+      1  100.0%        LazyCompile: ~<anonymous> node:internal/modules/run_main:47:29
+      1  100.0%          LazyCompile: ~loadESM node:internal/process/esm_loader:85:41
+      1  100.0%            t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    1.1%      LazyCompile: ~formatValue node:internal/util/inspect:726:21
+      1  100.0%        LazyCompile: ~inspect node:internal/util/inspect:286:17
+      1  100.0%          LazyCompile: ~formatWithOptionsInternal node:internal/util/inspect:1891:35
+      1  100.0%            LazyCompile: ~formatWithOptions node:internal/util/inspect:1883:27
+      1    1.1%      LazyCompile: ~dirname node:path:1275:10
+      1  100.0%        LazyCompile: ~Module node:internal/modules/cjs/loader:172:16
+      1  100.0%          LazyCompile: ~cjsPreparseModuleExports node:internal/modules/esm/translators:212:34
+      1  100.0%            LazyCompile: ~<anonymous> node:internal/modules/esm/translators:249:36
+      1    1.1%      LazyCompile: ~createToken /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/semver/internal/re.js:11:21
+      1  100.0%        Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/semver/internal/re.js:1:1
+      1  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1    1.1%      LazyCompile: ~createServerErrorConstructor /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/http-errors/index.js:202:39
+      1  100.0%        Function: ^forEachCode /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/http-errors/index.js:265:38
+      1  100.0%          t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1  100.0%            LazyCompile: ~populateConstructorExports /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/http-errors/index.js:264:37
+      1    1.1%      LazyCompile: ~createServer node:http:58:22
+      1  100.0%        LazyCompile: ~listen /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/express/lib/application.js:616:29
+      1  100.0%          Script: ~<anonymous> file:///Users/usuario/Desktop/node-projects/Clases/clase32/app.js:1:1
+      1  100.0%            t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    1.1%      LazyCompile: ~compileFunction node:vm:308:25
+      1  100.0%        LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+      1  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1    1.1%      LazyCompile: ~Socket._writeGeneric node:net:769:42
+      1  100.0%        LazyCompile: ~Socket._write node:net:806:35
+      1  100.0%          LazyCompile: ~writeOrBuffer node:internal/streams/writable:365:23
+      1  100.0%            LazyCompile: ~_write node:internal/streams/writable:283:16
+      1    1.1%      LazyCompile: ~Socket node:net:283:16
+      1  100.0%        LazyCompile: ~WriteStream node:tty:85:21
+      1  100.0%          LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1  100.0%            LazyCompile: ~getStderr node:internal/bootstrap/switches/is_main_thread:133:19
+      1    1.1%      LazyCompile: ~Server.listen node:net:1414:35
+      1  100.0%        LazyCompile: ~listen /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/express/lib/application.js:616:29
+      1  100.0%          Script: ~<anonymous> file:///Users/usuario/Desktop/node-projects/Clases/clase32/app.js:1:1
+      1  100.0%            t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    1.1%      LazyCompile: ~Readable node:internal/streams/readable:181:18
+      1  100.0%        LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%          LazyCompile: ~Socket node:net:283:16
+      1  100.0%            LazyCompile: ~WriteStream node:tty:85:21
+      1    1.1%      LazyCompile: ~Gauge._computeTheme /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/gauge/index.js:85:42
+      1  100.0%        LazyCompile: ~Gauge /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/gauge/index.js:19:16
+      1  100.0%          Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/npmlog/log.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1    1.1%      LazyCompile: ~Agent node:_http_agent:93:15
+      1  100.0%        Function: ~<anonymous> node:_http_agent:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    1.1%      LazyCompile: ~<anonymous> node:internal/validators:190:40
+      1  100.0%        Function: ^readSync node:fs:684:18
+      1  100.0%          Function: ^tryReadSync node:fs:429:21
+      1  100.0%            Function: ^readFileSync node:fs:450:22
+      1    1.1%      LazyCompile: ~<anonymous> node:internal/modules/esm/translators:249:36
+      1  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1  100.0%          LazyCompile: ~cjsPreparseModuleExports node:internal/modules/esm/translators:212:34
+      1  100.0%            LazyCompile: ~commonjsStrategy node:internal/modules/esm/translators:168:60
+      1    1.1%      LazyCompile: ~<anonymous> node:internal/fs/utils:357:35
+      1  100.0%        LazyCompile: ~<anonymous> node:internal/fs/utils:668:38
+      1  100.0%          LazyCompile: ~realpathSync node:fs:2408:22
+      1  100.0%            LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1    1.1%      Function: ~<anonymous> node:internal/modules/cjs/helpers:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      1    1.1%      Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    1.1%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+      1    1.1%      Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/statuses/index.js:1:1
+      1  100.0%        LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            LazyCompile: ~Module.load node:internal/modules/cjs/loader:969:33
+      1    1.1%      Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/@mapbox/node-pre-gyp/lib/node-pre-gyp.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    1.1%      Function: ^wrapfunction /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/depd/index.js:397:23
+      1  100.0%        Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/express/lib/response.js:1:1
+      1  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1    1.1%      Function: ^<anonymous> node:internal/validators:235:42
+      1  100.0%        Function: ^compileFunction node:vm:308:25
+      1  100.0%          Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+
+     79    6.9%  t node::fs::InternalModuleReadJSON(v8::FunctionCallbackInfo<v8::Value> const&)
+     79  100.0%    t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+     69   87.3%      Function: ^read node:internal/modules/package_json_reader:16:14
+     69  100.0%        Function: ^readPackage node:internal/modules/cjs/loader:290:21
+     61   88.4%          Function: ^resolveExports node:internal/modules/cjs/loader:472:24
+     61  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      8   11.6%          LazyCompile: ~resolveExports node:internal/modules/cjs/loader:472:24
+      8  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+     10   12.7%      LazyCompile: ~read node:internal/modules/package_json_reader:16:14
+      4   40.0%        LazyCompile: ~readPackage node:internal/modules/cjs/loader:290:21
+      3   75.0%          LazyCompile: ~resolveExports node:internal/modules/cjs/loader:472:24
+      3  100.0%            LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1   25.0%          LazyCompile: ~readPackageScope node:internal/modules/cjs/loader:321:26
+      1  100.0%            LazyCompile: ~shouldUseESMLoader node:internal/modules/run_main:26:28
+      3   30.0%        LazyCompile: ~getPackageConfig node:internal/modules/esm/resolve:191:26
+      3  100.0%          LazyCompile: ~packageResolve node:internal/modules/esm/resolve:838:24
+      3  100.0%            LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:917:23
+      3   30.0%        Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      3  100.0%          LazyCompile: ~resolveExports node:internal/modules/cjs/loader:472:24
+      2   66.7%            LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1   33.3%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+
+     34    3.0%  /usr/lib/system/libsystem_pthread.dylib
+     30   88.2%    t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      3   10.0%      LazyCompile: ~realpathSync node:fs:2408:22
+      3  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      3  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      3  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      3   10.0%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      3  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      3  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+      2    6.7%      LazyCompile: ~value node:internal/console/constructor:320:20
+      2  100.0%        LazyCompile: ~log node:internal/console/constructor:358:6
+      2  100.0%          t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      2  100.0%            LazyCompile: ~<anonymous> file:///Users/usuario/Desktop/node-projects/Clases/clase32/app.js:12:20
+      2    6.7%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      2  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    6.7%      LazyCompile: ~onParseError node:internal/url:551:22
+      2  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      2  100.0%          LazyCompile: ~URL node:internal/url:620:14
+      2  100.0%            LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:981:24
+      2    6.7%      LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      2  100.0%        LazyCompile: ~getStderr node:internal/bootstrap/switches/is_main_thread:133:19
+      2  100.0%          Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/debug/src/node.js:1:1
+      2  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1    3.3%      T node::loader::ModuleWrap::Link(v8::FunctionCallbackInfo<v8::Value> const&)
+      1  100.0%        LazyCompile: ~link node:internal/modules/esm/module_job:66:18
+      1  100.0%          t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    3.3%      LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+      1  100.0%        LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            LazyCompile: ~Module.load node:internal/modules/cjs/loader:969:33
+      1    3.3%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      1    3.3%      LazyCompile: ~stringify node:internal/modules/esm/translators:95:19
+      1  100.0%        LazyCompile: ~moduleStrategy node:internal/modules/esm/translators:134:56
+      1  100.0%          LazyCompile: ~moduleProvider node:internal/modules/esm/loader:229:28
+      1  100.0%            t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1    3.3%      LazyCompile: ~setupWarningHandler node:internal/bootstrap/pre_execution:141:29
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    3.3%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:81:28
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    3.3%      LazyCompile: ~get WriteStream node:fs:2993:18
+      1  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1  100.0%          Function: ^getOwn node:internal/bootstrap/loaders:180:16
+      1  100.0%            Function: ^syncExports node:internal/bootstrap/loaders:287:14
+      1    3.3%      LazyCompile: ~finalizeResolution node:internal/modules/esm/resolve:389:28
+      1  100.0%        LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:917:23
+      1  100.0%          LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:981:24
+      1  100.0%            LazyCompile: ~resolve node:internal/modules/esm/loader:402:16
+      1    3.3%      LazyCompile: ~debug node:internal/util/debuglog:76:15
+      1  100.0%        LazyCompile: ~logger node:internal/util/debuglog:96:18
+      1  100.0%          LazyCompile: ~loadNativeModule node:internal/modules/cjs/helpers:44:26
+      1  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+      1    3.3%      LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%        LazyCompile: ~Socket node:net:283:16
+      1  100.0%          LazyCompile: ~WriteStream node:tty:85:21
+      1  100.0%            LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1    3.3%      LazyCompile: ~<anonymous> node:internal/validators:83:3
+      1  100.0%        LazyCompile: ~parseFileMode node:internal/validators:58:23
+      1  100.0%          LazyCompile: ~open node:internal/fs/promises:449:20
+      1  100.0%            LazyCompile: ~readFile node:internal/fs/promises:786:24
+      1    3.3%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      1    3.3%      Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/gauge/themes.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    3.3%      Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/debug/src/node.js:1:1
+      1  100.0%        LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            LazyCompile: ~Module.load node:internal/modules/cjs/loader:969:33
+      1    3.3%      Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/@mapbox/node-pre-gyp/lib/node-pre-gyp.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    3.3%      Function: ^handleErrorFromBinding node:internal/fs/utils:340:32
+      1  100.0%        Function: ^readSync node:fs:684:18
+      1  100.0%          Function: ^tryReadSync node:fs:429:21
+      1  100.0%            Function: ^readFileSync node:fs:450:22
+
+     16    1.4%  T _getaudit
+     15   93.8%    t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      2   13.3%      LazyCompile: ~realpathSync node:fs:2408:22
+      2  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      2  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      2  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      2   13.3%      LazyCompile: ~Writable node:internal/streams/writable:219:18
+      2  100.0%        LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      2  100.0%          LazyCompile: ~Socket node:net:283:16
+      2  100.0%            LazyCompile: ~WriteStream node:tty:85:21
+      1    6.7%      t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1  100.0%        Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/express/lib/application.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1    6.7%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    6.7%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:81:28
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    6.7%      LazyCompile: ~get WriteStream node:fs:2993:18
+      1  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1  100.0%          Function: ^getOwn node:internal/bootstrap/loaders:180:16
+      1  100.0%            Function: ^syncExports node:internal/bootstrap/loaders:287:14
+      1    6.7%      LazyCompile: ~createHttpErrorConstructor /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/http-errors/index.js:118:37
+      1  100.0%        Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/http-errors/index.js:1:1
+      1  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1    6.7%      LazyCompile: ~_createClass /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/readable-stream/lib/internal/streams/buffer_list.js:13:22
+      1  100.0%        LazyCompile: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/readable-stream/lib/internal/streams/buffer_list.js:29:10
+      1  100.0%          Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/readable-stream/lib/internal/streams/buffer_list.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1    6.7%      LazyCompile: ~Readable node:internal/streams/readable:181:18
+      1  100.0%        LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%          LazyCompile: ~Socket node:net:283:16
+      1  100.0%            LazyCompile: ~WriteStream node:tty:85:21
+      1    6.7%      LazyCompile: ~<anonymous> node:internal/fs/utils:357:35
+      1  100.0%        LazyCompile: ~<anonymous> node:internal/fs/utils:668:38
+      1  100.0%          LazyCompile: ~realpathSync node:fs:2408:22
+      1  100.0%            LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1    6.7%      Function: ~<anonymous> node:_http_agent:1:1
+      1  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:http:1:1
+      1    6.7%      Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/semver/classes/range.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    6.7%      Function: ^forEachCode /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/http-errors/index.js:265:38
+      1  100.0%        t auto node::options_parser::OptionsParser<node::PerIsolateOptions>::Convert<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField, node::EnvironmentOptions>(std::__1::shared_ptr<node::options_parser::OptionsParser<node::EnvironmentOptions>::BaseOptionField>, node::EnvironmentOptions* (node::PerIsolateOptions::*)())::AdaptedField::LookupImpl(node::PerIsolateOptions*) const
+      1  100.0%          LazyCompile: ~populateConstructorExports /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/http-errors/index.js:264:37
+      1  100.0%            Function: ~<anonymous> /Users/usuario/Desktop/node-projects/Clases/clase32/node_modules/http-errors/index.js:1:1
+

@@ -1,0 +1,20 @@
+{
+  "name": "desafio16",
+  "version": "1.0.0",
+  "description": "Prueba Profiling",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cluster": "^0.7.7",
+    "express": "^4.17.3",
+    "log4js": "^6.4.1",
+    "os": "^0.1.2"
+  }
+}
